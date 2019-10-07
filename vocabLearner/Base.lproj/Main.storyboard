@@ -10,7 +10,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,7 +56,7 @@
         <!--Edit-->
         <scene sceneID="UcK-1h-E9Z">
             <objects>
-                <viewController id="fV9-aN-jPu" sceneMemberID="viewController">
+                <viewController id="fV9-aN-jPu" customClass="EditViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="es6-Rh-ZVO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,7 +72,7 @@
         <!--Settings-->
         <scene sceneID="GJM-5a-2fq">
             <objects>
-                <viewController id="oHY-2Z-CYy" sceneMemberID="viewController">
+                <viewController id="oHY-2Z-CYy" customClass="SettingsViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZIK-bQ-epJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +109,7 @@
         <!--Games-->
         <scene sceneID="EkP-Kq-qwu">
             <objects>
-                <viewController id="Ufg-ao-hyC" sceneMemberID="viewController">
+                <viewController id="Ufg-ao-hyC" customClass="GamesViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fUJ-HA-F2Z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,7 +125,7 @@
         <!--Add-->
         <scene sceneID="JhE-23-COc">
             <objects>
-                <viewController id="4Cy-Zz-6VW" sceneMemberID="viewController">
+                <viewController id="4Cy-Zz-6VW" customClass="AddViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mod-ng-7Kl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
