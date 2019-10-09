@@ -16,6 +16,7 @@
 		75335E9923475A2000E978A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75335E9723475A2000E978A5 /* LaunchScreen.storyboard */; };
 		75335EA423475A2000E978A5 /* vocabLearnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75335EA323475A2000E978A5 /* vocabLearnerTests.swift */; };
 		75335EAF23475A2000E978A5 /* vocabLearnerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75335EAE23475A2000E978A5 /* vocabLearnerUITests.swift */; };
+		753D20BC234DE1120075A878 /* InitialScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753D20BB234DE1120075A878 /* InitialScreen.swift */; };
 		75CA21CC234B4033009D65AD /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA21CB234B4033009D65AD /* AddViewController.swift */; };
 		75CA21CE234B407C009D65AD /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA21CD234B407C009D65AD /* GamesViewController.swift */; };
 		75CA21D0234B4092009D65AD /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA21CF234B4092009D65AD /* EditViewController.swift */; };
@@ -55,6 +56,7 @@
 		75335EAA23475A2000E978A5 /* vocabLearnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vocabLearnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75335EAE23475A2000E978A5 /* vocabLearnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vocabLearnerUITests.swift; sourceTree = "<group>"; };
 		75335EB023475A2000E978A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		753D20BB234DE1120075A878 /* InitialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InitialScreen.swift; path = ../InitialScreen.swift; sourceTree = "<group>"; };
 		75CA21CB234B4033009D65AD /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		75CA21CD234B407C009D65AD /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		75CA21CF234B4092009D65AD /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		75335E8823475A1E00E978A5 /* vocabLearner */ = {
 			isa = PBXGroup;
 			children = (
+				753D20BB234DE1120075A878 /* InitialScreen.swift */,
 				75335E8923475A1E00E978A5 /* AppDelegate.swift */,
 				75335E8B23475A1E00E978A5 /* SceneDelegate.swift */,
 				75335E8D23475A1E00E978A5 /* HomeViewController.swift */,
@@ -280,6 +283,7 @@
 				75335E8A23475A1E00E978A5 /* AppDelegate.swift in Sources */,
 				75CA21CE234B407C009D65AD /* GamesViewController.swift in Sources */,
 				75335E8C23475A1E00E978A5 /* SceneDelegate.swift in Sources */,
+				753D20BC234DE1120075A878 /* InitialScreen.swift in Sources */,
 				75CA21D0234B4092009D65AD /* EditViewController.swift in Sources */,
 				75CA21D2234B40BD009D65AD /* SettingsViewController.swift in Sources */,
 			);

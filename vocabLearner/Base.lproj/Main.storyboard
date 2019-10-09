@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X85-vc-2rD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X85-vc-2rD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,25 +33,14 @@
                         <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="cVv-sM-Ss8"/>
+                    <navigationItem key="navigationItem" id="l2J-wo-RtV"/>
+                    <connections>
+                        <segue destination="kKr-Pf-lh4" kind="presentation" identifier="initialStartUp" id="4H9-cH-ffF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tabBar contentMode="scaleToFill" id="0mY-Du-z9W" customClass="MyTabController" customModule="MyTabBars">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <items>
-                        <tabBarItem title="Home" image="house" catalog="system" landscapeImage="house" selectedImage="house" id="MCK-fD-aYQ">
-                            <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                        </tabBarItem>
-                        <tabBarItem title="Add" image="plus" catalog="system" id="FJG-CD-dpL"/>
-                        <tabBarItem title="Games" image="gamecontroller" catalog="system" id="oWa-Bt-nM0"/>
-                        <tabBarItem title="Edit" image="arrow.swap" catalog="system" id="0Mc-gp-JoI"/>
-                        <tabBarItem title="Settings" image="person.icloud" catalog="system" id="yOO-d5-93o"/>
-                    </items>
-                </tabBar>
             </objects>
-            <point key="canvasLocation" x="1277" y="-277"/>
+            <point key="canvasLocation" x="2186.9565217391305" y="-277.23214285714283"/>
         </scene>
         <!--Edit-->
         <scene sceneID="UcK-1h-E9Z">
@@ -83,7 +72,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Usl-el-35Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-497" y="-462"/>
+            <point key="canvasLocation" x="-790" y="-597"/>
+        </scene>
+        <!--Welcome!-->
+        <scene sceneID="f5J-5L-B7f">
+            <objects>
+                <viewController storyboardIdentifier="InitialScreenViewController" id="kKr-Pf-lh4" customClass="InitialScreenViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="II3-9Y-HlI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Initial Set Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6S-3T-3xV">
+                                <rect key="frame" x="159" y="131" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZKB-l4-UdW">
+                                <rect key="frame" x="146" y="215" width="110" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oP3-LU-VRk">
+                                <rect key="frame" x="156" y="645" width="90" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirm:" destination="kKr-Pf-lh4" eventType="touchUpInside" id="KxQ-rn-GXr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocI-pS-e3n">
+                                <rect key="frame" x="70" y="228" width="50" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="aCu-dw-7fm"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Welcome!" id="jeT-Iz-Cz1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRO-Cl-Xck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1850.7246376811595" y="-1613.1696428571429"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="V9A-fn-pVm">
@@ -91,11 +126,12 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="X85-vc-2rD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wUR-b4-LZo">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="2Se-S1-3C7"/>
+                        <segue destination="MCm-ed-UYM" kind="relationship" relationship="viewControllers" id="2Se-S1-3C7"/>
                         <segue destination="4Cy-Zz-6VW" kind="relationship" relationship="viewControllers" id="DqT-Sc-NAM"/>
                         <segue destination="Ufg-ao-hyC" kind="relationship" relationship="viewControllers" id="KfQ-fL-38T"/>
                         <segue destination="fV9-aN-jPu" kind="relationship" relationship="viewControllers" id="WoO-e3-zt2"/>
@@ -104,7 +140,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W4u-JG-kYj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="395.6521739130435" y="105.80357142857143"/>
+            <point key="canvasLocation" x="193" y="-159"/>
         </scene>
         <!--Games-->
         <scene sceneID="EkP-Kq-qwu">
@@ -138,13 +174,31 @@
             </objects>
             <point key="canvasLocation" x="1294" y="467"/>
         </scene>
+        <!--Home-->
+        <scene sceneID="zzr-Oj-lHh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MCm-ed-UYM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="cVv-sM-Ss8"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aux-T3-xr0">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="24h-qJ-LEe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qxi-OF-7U3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="952" y="-796"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.swap" catalog="system" width="64" height="50"/>
         <image name="gamecontroller" catalog="system" width="64" height="40"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="option" catalog="system" width="64" height="56"/>
-        <image name="person.icloud" catalog="system" width="64" height="44"/>
-        <image name="plus" catalog="system" width="64" height="58"/>
+        <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
 </document>
