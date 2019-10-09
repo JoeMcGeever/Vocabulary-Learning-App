@@ -23,8 +23,22 @@ class InitialScreenViewController :UIViewController{
     
     @IBAction func confirm(_ sender: Any) {
         print(nameTextBox.text!) //WORKS -> NEED TO SAVE TO DATABASE
+       
+        if let text = nameTextBox.text, !text.isEmpty {
+            //var name : [NSManagedObject] = text SAVE TO DB HERE
+            dismiss(animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Hold on!", message: "Please fill in all the details", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok!", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+        }
+        
+        
+        
+        
         //and validate to see if all data is entered
-        dismiss(animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(nameTextBox: UITextField) -> Bool {   //delegate method
