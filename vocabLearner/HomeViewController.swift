@@ -7,20 +7,34 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeViewController: UIViewController {
     
-
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+         if(firstTime()){
+            performSegue(withIdentifier: "initialStartUp", sender: nil)
+        }
         
-        performSegue(withIdentifier: "initialStartUp", sender: nil)
-       
-        
-        // if(firstTime()){
-       //     performSegue(withIdentifier: "initialStartUp", sender: nil)
-        //}
+        //FETCH NAME FROM CORE DATA
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //refer to persistant container
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+               print(data.value(forKey: "name") as! String)
+               nameLabel.text = (data.value(forKey: "name") as! String)
+          }
+        } catch {
+            print("Failed")
+        }
     }
 
     
