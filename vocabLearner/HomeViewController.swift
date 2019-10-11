@@ -8,7 +8,8 @@
 
 import UIKit
 import CoreData
-
+//https://www.iosapptemplates.com/blog/ios-development/data-persistence-ios-swift
+// ^ data persistance --> have a look at Plists
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -18,6 +19,7 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
          if(firstTime()){
             performSegue(withIdentifier: "initialStartUp", sender: nil)
+            viewDidLoad()
         }
         
         //FETCH NAME FROM CORE DATA
