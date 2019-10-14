@@ -12,9 +12,11 @@ import CoreData
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var languageLabel: UILabel!
     
     var currentUsername : String = "" //variables used to chaneg the users name
     var newUsername : String = ""
+    var language : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,17 @@ class SettingsViewController: UIViewController {
             for data in result as! [NSManagedObject] {
                print(data.value(forKey: "name") as! String)
                 currentUsername = (data.value(forKey: "name") as! String)
+                
+                
+                //language = (data.value(forKey: "langauge") as! String)
+                
+                
                 nameTextField.text = currentUsername
+                
+                
+                //languageLabel.text = language
+                
+                
           }
         } catch {
             print("Failed")
@@ -75,8 +87,6 @@ class SettingsViewController: UIViewController {
            //create the context
         
         let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "User")
-        print("new name: \(newUsername)")
-        print("current name: \(currentUsername)")
         fetchRequest.predicate = NSPredicate(format: "name = %@", currentUsername)
         do {
             let test = try context.fetch(fetchRequest)

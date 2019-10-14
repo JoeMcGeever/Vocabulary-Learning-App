@@ -95,12 +95,27 @@
                                     <action selector="cofirmButton:" destination="oHY-2Z-CYy" eventType="touchUpInside" id="TAu-gj-xNz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Language:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDn-0E-6Vd">
+                                <rect key="frame" x="53" y="160" width="81" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Inapplicable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4R-Gd-kNS">
+                                <rect key="frame" x="137" y="160" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="YoG-Qn-GVk"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="option" catalog="system" id="hYm-KH-NuA"/>
                     <connections>
+                        <outlet property="languageLabel" destination="h4R-Gd-kNS" id="Nvk-Wz-HvA"/>
                         <outlet property="nameTextField" destination="gMQ-vN-l3r" id="szo-oX-1t8"/>
                     </connections>
                 </viewController>

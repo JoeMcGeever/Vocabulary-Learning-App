@@ -53,6 +53,7 @@ class InitialScreenViewController :UIViewController, UIPickerViewDataSource, UIP
             let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
             let newUser = NSManagedObject(entity: entity!, insertInto: context)
             newUser.setValue(nameTextBox.text, forKey: "name")
+            newUser.setValue(selectedLangauge, forKey: "language")
             do {
                try context.save()
                 print("Saved!")
