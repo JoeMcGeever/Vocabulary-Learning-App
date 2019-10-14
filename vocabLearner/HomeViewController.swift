@@ -21,7 +21,6 @@ class HomeViewController: UIViewController {
             performSegue(withIdentifier: "initialStartUp", sender: nil)
             viewDidLoad()
         }
-        
         //FETCH NAME FROM CORE DATA
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         //refer to persistant container
@@ -40,7 +39,10 @@ class HomeViewController: UIViewController {
     }
 
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewDidLoad()
+    }
     
     func firstTime()->Bool{
         let defaults = UserDefaults.standard

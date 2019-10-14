@@ -23,12 +23,24 @@ class InitialScreenViewController :UIViewController{
     
     
     
-    
     @IBAction func confirm(_ sender: Any) {
-        print(nameTextBox.text!) //WORKS -> NEED TO SAVE TO DATABASE
+        
        
         if let text = nameTextBox.text, !text.isEmpty {
-            //var name : [NSManagedObject] = text SAVE TO DB HERE
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            //refer to persistant container
+            let context = appDelegate.persistentContainer.viewContext
+            //create the context
+            let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
+            let newUser = NSManagedObject(entity: entity!, insertInto: context)
+            newUser.setValue(nameTextBox.text, forKey: "name")
+            do {
+               try context.save()
+                print("Saved!")
+              } catch {
+               print("Failed saving")
+            }
+            
             dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Hold on!", message: "Please fill in all the details", preferredStyle: .alert)
@@ -38,16 +50,9 @@ class InitialScreenViewController :UIViewController{
             
         }
         
-        
-        
-        
         //and validate to see if all data is entered
     }
     
-    func textFieldShouldReturn(nameTextBox: UITextField) -> Bool {   //delegate method
-      nameTextBox.resignFirstResponder()
-      return true
-    }
 }
 
 extension InitialScreenViewController : UITextFieldDelegate {
