@@ -10,7 +10,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,7 @@
         <!--Edit-->
         <scene sceneID="UcK-1h-E9Z">
             <objects>
-                <viewController id="fV9-aN-jPu" customClass="EditViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fV9-aN-jPu" customClass="EditViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="es6-Rh-ZVO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +62,7 @@
         <!--Settings-->
         <scene sceneID="GJM-5a-2fq">
             <objects>
-                <viewController id="oHY-2Z-CYy" customClass="SettingsViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oHY-2Z-CYy" customClass="SettingsViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZIK-bQ-epJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,13 +111,13 @@
         <!--Welcome!-->
         <scene sceneID="f5J-5L-B7f">
             <objects>
-                <viewController storyboardIdentifier="InitialScreenViewController" id="kKr-Pf-lh4" customClass="InitialScreenViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialScreenViewController" id="kKr-Pf-lh4" customClass="InitialScreenViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="II3-9Y-HlI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Initial Set Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6S-3T-3xV">
-                                <rect key="frame" x="159" y="131" width="97" height="21"/>
+                                <rect key="frame" x="139" y="44" width="97" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -132,18 +132,33 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocI-pS-e3n">
-                                <rect key="frame" x="70" y="228" width="50" height="21"/>
+                                <rect key="frame" x="70" y="125" width="50" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZKB-l4-UdW">
-                                <rect key="frame" x="152" y="223" width="110" height="34"/>
+                                <rect key="frame" x="126" y="118" width="110" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="alphabet" textContentType="name"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Langauge:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kM-P1-q5V">
+                                <rect key="frame" x="39" y="200" width="81" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ug5-8A-dVA">
+                                <rect key="frame" x="-6" y="229" width="381" height="174"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="kKr-Pf-lh4" id="wLJ-d8-Vu3"/>
+                                    <outlet property="delegate" destination="kKr-Pf-lh4" id="I2k-jQ-pCB"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="aCu-dw-7fm"/>
@@ -151,11 +166,12 @@
                     <navigationItem key="navigationItem" title="Welcome!" id="jeT-Iz-Cz1"/>
                     <connections>
                         <outlet property="nameTextBox" destination="ZKB-l4-UdW" id="viw-Gp-I0i"/>
+                        <outlet property="pickerView" destination="Ug5-8A-dVA" id="mhB-hh-IYM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRO-Cl-Xck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2186" y="-1191"/>
+            <point key="canvasLocation" x="2184.8000000000002" y="-1191.4542728635683"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="V9A-fn-pVm">
@@ -182,7 +198,7 @@
         <!--Games-->
         <scene sceneID="EkP-Kq-qwu">
             <objects>
-                <viewController id="Ufg-ao-hyC" customClass="GamesViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ufg-ao-hyC" customClass="GamesViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fUJ-HA-F2Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -198,7 +214,7 @@
         <!--Add-->
         <scene sceneID="JhE-23-COc">
             <objects>
-                <viewController id="4Cy-Zz-6VW" customClass="AddViewController" customModule="vocabLearner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4Cy-Zz-6VW" customClass="AddViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mod-ng-7Kl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

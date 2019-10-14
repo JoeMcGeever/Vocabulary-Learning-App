@@ -10,22 +10,41 @@ import Foundation
 import UIKit
 import CoreData
 
-class InitialScreenViewController :UIViewController{
+class InitialScreenViewController :UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+ 
+    
     
     @IBOutlet weak var nameTextBox: UITextField!
-    
-    
+    @IBOutlet weak var pickerView: UIPickerView!
+    let language = ["Inapplicable ","German", "Spanish", "French"] //set up array for picker view
+    var selectedLangauge : String = ""
+     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextBox.delegate = self
-            }
+        }
     
+    //setting up for picker view
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1 //how many rows we have --> only need 1
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return language[row] //displays each component in different rows in our picker view
+    }
+      func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return language.count
+     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedLangauge = language[row] //what happend when user selects row
+    }
+
     
     
     @IBAction func confirm(_ sender: Any) {
-        
+        print(selectedLangauge) //NOT PRINTING
        
+        
         if let text = nameTextBox.text, !text.isEmpty {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             //refer to persistant container

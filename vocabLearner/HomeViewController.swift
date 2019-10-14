@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
          if(firstTime()){
+            
             performSegue(withIdentifier: "initialStartUp", sender: nil)
             viewDidLoad()
         }
