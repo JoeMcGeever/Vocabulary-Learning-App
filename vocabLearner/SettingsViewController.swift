@@ -7,14 +7,45 @@
 //
 
 import UIKit
+import CoreData
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var nameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //refer to persistant container
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+               print(data.value(forKey: "name") as! String)
+               nameTextField.text = (data.value(forKey: "name") as! String)
+          }
+        } catch {
+            print("Failed")
+        }
         // Do any additional setup after loading the view.
     }
+    
+    
+    @IBAction func cofirmButton(_ sender: Any) {
+        let refreshAlert = UIAlertController(title: "Are you sure?", message: "All data will be lost.", preferredStyle: UIAlertController.Style.alert)
+
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+          print("Handle Ok logic here")
+          }))
+
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+          print("Handle Cancel Logic here")
+          }))
+
+        present(refreshAlert, animated: true, completion: nil)    }
     
 
     /*

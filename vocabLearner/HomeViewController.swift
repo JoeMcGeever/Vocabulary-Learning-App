@@ -7,20 +7,36 @@
 //
 
 import UIKit
-
+import CoreData
+//https://www.iosapptemplates.com/blog/ios-development/data-persistence-ios-swift
+// ^ data persistance --> have a look at Plists
 class HomeViewController: UIViewController {
     
-
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+         if(firstTime()){
+            performSegue(withIdentifier: "initialStartUp", sender: nil)
+            viewDidLoad()
+        }
         
-        performSegue(withIdentifier: "initialStartUp", sender: nil)
-       
-        
-        // if(firstTime()){
-       //     performSegue(withIdentifier: "initialStartUp", sender: nil)
-        //}
+        //FETCH NAME FROM CORE DATA
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //refer to persistant container
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        request.returnsObjectsAsFaults = false
+        do {
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject] {
+               print(data.value(forKey: "name") as! String)
+               nameLabel.text = (data.value(forKey: "name") as! String)
+          }
+        } catch {
+            print("Failed")
+        }
     }
 
     
