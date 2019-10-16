@@ -9,14 +9,19 @@
 import UIKit
 import CoreData
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
+    
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet weak var languagePicker: UIPickerView!
+    let languageArray = ["Inapplicable","German", "Spanish", "French"] //set up array for picker view
     
     var currentUsername : String = "" //variables used to chaneg the users name
     var newUsername : String = ""
     var language : String = ""
+    var selectedLanguage : String = "PICKER FAILED"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,25 +37,35 @@ class SettingsViewController: UIViewController {
         do {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
-               print(data.value(forKey: "name") as! String)
+                //print(data.value(forKey: "name") as! String)
+                //print(data.value(forKey: "name") as! String)
+                //SET ALL INITIAL VALUES FOR DISPLAYING
                 currentUsername = (data.value(forKey: "name") as! String)
-                
-                
-                //language = (data.value(forKey: "langauge") as! String)
-                
-                
+                language = (data.value(forKey: "language") as! String)
                 nameTextField.text = currentUsername
-                
-                
-                //languageLabel.text = language
-                
-                
+                languageLabel.text = language
           }
         } catch {
             print("Failed")
         }
         // Do any additional setup after loading the view.
     }
+    
+    
+    //setting up for picker view
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1 //how many rows we have --> only need 1
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return languageArray[row] //displays each component in different rows in our picker view
+    }
+      func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return language.count
+     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedLanguage = languageArray[row] //what happend when user selects row
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -71,6 +86,11 @@ class SettingsViewController: UIViewController {
 
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
           print("Handle Cancel Logic here")
+            
+            
+            //reset all values to what they initially were here!
+            
+            
           }))
 
         present(refreshAlert, animated: true, completion: nil)    }
@@ -93,7 +113,11 @@ class SettingsViewController: UIViewController {
             print(test)
             let itemUpdate = test[0] as! NSManagedObject
             itemUpdate.setValue(newUsername, forKey: "name")
+            
+            itemUpdate.setValue(selectedLanguage, forKey: "language")
+            
             currentUsername = newUsername //update the current username value
+            language = selectedLanguage //and lang
             do {
                 try context.save()
             }

@@ -16,14 +16,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4BI-rb-COr">
-                                <rect key="frame" x="103" y="73" width="44" height="21"/>
+                                <rect key="frame" x="90" y="89" width="106.5" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="and welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ed-kd-P9l">
-                                <rect key="frame" x="155" y="73" width="107" height="21"/>
+                                <rect key="frame" x="147" y="89" width="110" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -41,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2186.4000000000001" y="-277.51124437781112"/>
+            <point key="canvasLocation" x="2309.5999999999999" y="-224.4377811094453"/>
         </scene>
         <!--Edit-->
         <scene sceneID="UcK-1h-E9Z">
@@ -109,6 +109,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1lQ-ww-ihO">
+                                <rect key="frame" x="0.0" y="201" width="375" height="168"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="YoG-Qn-GVk"/>
@@ -116,6 +120,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="option" catalog="system" id="hYm-KH-NuA"/>
                     <connections>
                         <outlet property="languageLabel" destination="h4R-Gd-kNS" id="Nvk-Wz-HvA"/>
+                        <outlet property="languagePicker" destination="1lQ-ww-ihO" id="oV0-Hp-vca"/>
                         <outlet property="nameTextField" destination="gMQ-vN-l3r" id="szo-oX-1t8"/>
                     </connections>
                 </viewController>
