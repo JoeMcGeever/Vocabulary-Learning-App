@@ -12,42 +12,25 @@ import CoreData
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
+    let userCoreData = UsersCoreData()
     
     var language = "Inapplicable"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         // Do any additional setup after loading the view.
          if(firstTime()){
             //show initial set up if
             performSegue(withIdentifier: "initialStartUp", sender: nil)
             viewDidLoad()
         }
-        
         //FETCH NAME FROM CORE DATA
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //refer to persistant container
-        let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-               //print(data.value(forKey: "name") as! String)
-               nameLabel.text = (data.value(forKey: "name") as! String)
-               language = (data.value(forKey: "language") as! String)
-                
-            }
-        } catch {
-            print("Failed")
-        }
-        
+        let userDetails = userCoreData.getUserDetails()
+        nameLabel.text = userDetails[0]
+        language = userDetails[1]
         //sets the background image using the programatic extension
         //added for view
         self.view.addBackground(language: language)
-        
     }
 
     //so updates on other views will change this one accordingly
@@ -57,9 +40,9 @@ class HomeViewController: UIViewController {
         self.view.addBackground(language: language)
     }
     
+    
     func firstTime()->Bool{
         let defaults = UserDefaults.standard
-
         if defaults.string(forKey: "firstTime") != nil{
             //print("App already launched : \(firstTime)")
             return false
@@ -74,7 +57,7 @@ class HomeViewController: UIViewController {
 
 
 
-extension UIView {
+extension UIView { //programatically set the background
     func addBackground(language : String) {
     // screen width and height:
     let width = UIScreen.main.bounds.size.width

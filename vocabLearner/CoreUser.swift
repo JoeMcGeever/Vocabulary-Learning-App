@@ -12,7 +12,7 @@ import UIKit
 
 class UsersCoreData {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    //refer to persistant container    var context = appDelegate.persistentContainer.viewContext
+    //refer to persistant container
     
     func addNewUser(name : String, lang : String) -> Bool{
          //create the context
