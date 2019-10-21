@@ -6,7 +6,7 @@
 //  Copyright © 2019 Joseph McGeever. All rights reserved.
 //
 
-import Foundation
+
 import CoreData
 import UIKit
 

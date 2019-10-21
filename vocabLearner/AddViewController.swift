@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+
 
 class AddViewController: UIViewController {
 
@@ -70,7 +70,7 @@ class AddViewController: UIViewController {
             let alert = UIAlertController(title: "Hold on!", message: "Please fill in all the details", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok!", style: .default, handler: nil)
             alert.addAction(action)
-            present(alert, animated: true, completion: nil) 
+            present(alert, animated: true, completion: nil)
         }
         
     }

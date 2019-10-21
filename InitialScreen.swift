@@ -6,7 +6,6 @@
 //  Copyright © 2019 Joseph McGeever. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class InitialScreenViewController :UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
