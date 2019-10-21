@@ -19,6 +19,8 @@ class AddViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstText.delegate = self
+        secondText.delegate = self
         
         //below gets the users details to be presented on the setting screen
         

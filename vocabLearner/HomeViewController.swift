@@ -8,20 +8,24 @@
 
 import UIKit
 import CoreData
-//https://www.iosapptemplates.com/blog/ios-development/data-persistence-ios-swift
-// ^ data persistance --> have a look at Plists
+
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     
+    var language = "Inapplicable"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         // Do any additional setup after loading the view.
          if(firstTime()){
             //show initial set up if
             performSegue(withIdentifier: "initialStartUp", sender: nil)
             viewDidLoad()
         }
+        
         //FETCH NAME FROM CORE DATA
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         //refer to persistant container
@@ -33,16 +37,24 @@ class HomeViewController: UIViewController {
             for data in result as! [NSManagedObject] {
                //print(data.value(forKey: "name") as! String)
                nameLabel.text = (data.value(forKey: "name") as! String)
-          }
+               language = (data.value(forKey: "language") as! String)
+                
+            }
         } catch {
             print("Failed")
         }
+        
+        //sets the background image using the programatic extension
+        //added for view
+        self.view.addBackground(language: language)
+        
     }
 
     //so updates on other views will change this one accordingly
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewDidLoad()
+        self.view.addBackground(language: language)
     }
     
     func firstTime()->Bool{
@@ -60,3 +72,31 @@ class HomeViewController: UIViewController {
     
 }
 
+
+
+extension UIView {
+    func addBackground(language : String) {
+    // screen width and height:
+    let width = UIScreen.main.bounds.size.width
+    let height = UIScreen.main.bounds.size.height
+
+    let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+    
+        
+        //switch case to determine which image to use
+        switch language {
+        case "German":
+            imageViewBackground.image = UIImage(named: "German.png")
+        case "Spanish":
+            imageViewBackground.image = UIImage(named: "Spanish.png")
+        default:
+            imageViewBackground.backgroundColor = .red
+        }
+        
+        
+    // you can change the content mode:
+    imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
+
+    self.addSubview(imageViewBackground)
+    self.sendSubviewToBack(imageViewBackground)
+}}

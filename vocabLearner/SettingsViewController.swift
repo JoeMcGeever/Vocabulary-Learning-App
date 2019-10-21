@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var pickerView: UIPickerView!
     
     
-    let languageArray = ["Inapplicable","German", "Spanish", "French"] //set up array for picker view
+    let languageArray = ["Inapplicable","German", "Spanish"] //set up array for picker view
     
     var currentUsername : String = "" //variables used to chaneg the users name
     var newUsername : String = ""

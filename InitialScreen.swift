@@ -16,7 +16,7 @@ class InitialScreenViewController :UIViewController, UIPickerViewDataSource, UIP
     
     @IBOutlet weak var nameTextBox: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
-    let language = ["Inapplicable","German", "Spanish", "French"] //set up array for picker view
+    let language = ["Inapplicable","German", "Spanish"] //set up array for picker view
     var selectedLangauge : String = "Inapplicable"
      
     
