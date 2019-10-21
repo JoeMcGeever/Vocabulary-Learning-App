@@ -42,7 +42,7 @@ class InitialScreenViewController :UIViewController, UIPickerViewDataSource, UIP
     
     
     @IBAction func confirm(_ sender: Any) {
-        print(selectedLangauge) //NOT PRINTING
+        //print(selectedLangauge)
        
         
         if let text = nameTextBox.text, !text.isEmpty {

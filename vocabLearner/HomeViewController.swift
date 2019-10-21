@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
          if(firstTime()){
-            
+            //show initial set up if
             performSegue(withIdentifier: "initialStartUp", sender: nil)
             viewDidLoad()
         }
@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
         do {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
-               print(data.value(forKey: "name") as! String)
+               //print(data.value(forKey: "name") as! String)
                nameLabel.text = (data.value(forKey: "name") as! String)
           }
         } catch {
@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
         }
     }
 
-    
+    //so updates on other views will change this one accordingly
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewDidLoad()
@@ -48,12 +48,12 @@ class HomeViewController: UIViewController {
     func firstTime()->Bool{
         let defaults = UserDefaults.standard
 
-        if let firstTime = defaults.string(forKey: "firstTime"){
-            print("App already launched : \(firstTime)")
+        if defaults.string(forKey: "firstTime") != nil{
+            //print("App already launched : \(firstTime)")
             return false
         }else{
             defaults.set(true, forKey: "firstTime")
-            print("App launched first time")
+            //print("App launched first time")
             return true
         }
     }

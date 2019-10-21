@@ -137,6 +137,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
 }
 
+//so the return button works on text fields
 extension SettingsViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
