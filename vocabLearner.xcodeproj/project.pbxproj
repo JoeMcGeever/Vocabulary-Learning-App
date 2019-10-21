@@ -21,6 +21,8 @@
 		75CA21CE234B407C009D65AD /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA21CD234B407C009D65AD /* GamesViewController.swift */; };
 		75CA21D0234B4092009D65AD /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA21CF234B4092009D65AD /* EditViewController.swift */; };
 		75CA21D2234B40BD009D65AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA21D1234B40BD009D65AD /* SettingsViewController.swift */; };
+		D80271DB235DF87C00F08CF9 /* CoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80271DA235DF87C00F08CF9 /* CoreUser.swift */; };
+		D80271DD235E02A100F08CF9 /* CoreWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80271DC235E02A100F08CF9 /* CoreWords.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		75CA21CD234B407C009D65AD /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		75CA21CF234B4092009D65AD /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		75CA21D1234B40BD009D65AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D80271DA235DF87C00F08CF9 /* CoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUser.swift; sourceTree = "<group>"; };
+		D80271DC235E02A100F08CF9 /* CoreWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreWords.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,8 @@
 				75335E9723475A2000E978A5 /* LaunchScreen.storyboard */,
 				75335E9A23475A2000E978A5 /* Info.plist */,
 				75335E9223475A1E00E978A5 /* vocabLearner.xcdatamodeld */,
+				D80271DA235DF87C00F08CF9 /* CoreUser.swift */,
+				D80271DC235E02A100F08CF9 /* CoreWords.swift */,
 			);
 			path = vocabLearner;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D80271DD235E02A100F08CF9 /* CoreWords.swift in Sources */,
 				75CA21CC234B4033009D65AD /* AddViewController.swift in Sources */,
 				75335E8E23475A1E00E978A5 /* HomeViewController.swift in Sources */,
 				75335E9423475A1E00E978A5 /* vocabLearner.xcdatamodeld in Sources */,
@@ -286,6 +293,7 @@
 				753D20BC234DE1120075A878 /* InitialScreen.swift in Sources */,
 				75CA21D0234B4092009D65AD /* EditViewController.swift in Sources */,
 				75CA21D2234B40BD009D65AD /* SettingsViewController.swift in Sources */,
+				D80271DB235DF87C00F08CF9 /* CoreUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

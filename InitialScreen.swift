@@ -6,19 +6,17 @@
 //  Copyright © 2019 Joseph McGeever. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import CoreData
 
 class InitialScreenViewController :UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
- 
     
     
     @IBOutlet weak var nameTextBox: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
     let language = ["Inapplicable","German", "Spanish"] //set up array for picker view
     var selectedLangauge : String = "Inapplicable"
-     
+     let userCoreData = UsersCoreData()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,34 +40,19 @@ class InitialScreenViewController :UIViewController, UIPickerViewDataSource, UIP
     
     
     @IBAction func confirm(_ sender: Any) {
-        //print(selectedLangauge)
-       
-        
         if let text = nameTextBox.text, !text.isEmpty {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            //refer to persistant container
-            let context = appDelegate.persistentContainer.viewContext
-            //create the context
-            let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
-            let newUser = NSManagedObject(entity: entity!, insertInto: context)
-            newUser.setValue(nameTextBox.text, forKey: "name")
-            newUser.setValue(selectedLangauge, forKey: "language")
-            do {
-               try context.save()
-                print("Saved!")
-              } catch {
-               print("Failed saving")
+            //use import UserCoreData to add new user
+            if(userCoreData.addNewUser(name: nameTextBox.text!, lang: selectedLangauge))
+            {
+                print("true")
             }
-            
             dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Hold on!", message: "Please fill in all the details", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok!", style: .default, handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
-            
         }
-        
         //and validate to see if all data is entered
     }
     
