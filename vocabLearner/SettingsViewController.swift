@@ -14,7 +14,10 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var languageLabel: UILabel!
-    @IBOutlet weak var languagePicker: UIPickerView!
+
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    
     let languageArray = ["Inapplicable","German", "Spanish", "French"] //set up array for picker view
     
     var currentUsername : String = "" //variables used to chaneg the users name
@@ -60,7 +63,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return languageArray[row] //displays each component in different rows in our picker view
     }
       func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return language.count
+        return languageArray.count
      }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedLanguage = languageArray[row] //what happend when user selects row
@@ -81,6 +84,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
           print("Handle Ok logic here")
             self.newUsername = self.nameTextField.text ?? self.currentUsername //fill the new name in newUsername -- if nothing, keep as is
+            
             self.updateData() //call the update function
           }))
 
@@ -128,6 +132,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         catch {
             print(error)
         }
+        viewDidLoad()
     }
 
 }
