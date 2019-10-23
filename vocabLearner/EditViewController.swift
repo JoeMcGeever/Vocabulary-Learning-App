@@ -96,19 +96,37 @@ class EditViewController: UIViewController {
     
     
     @IBAction func deleteButton(_ sender: Any) {
+        //ONLY ALLOW IF SEARCH IS COMPLETED
         
+        let refreshAlert = UIAlertController(title: "Are you sure?", message: "This word will be deleted.", preferredStyle: UIAlertController.Style.alert)
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+          print("Handle Ok logic here")
+
+            //do delete stuff here
+            if(self.wordsCoreData.deleteWordPair(searchWord: self.searchWord.text!)){
+                print("Delete was successful")
+            }
+            
+            
+            self.viewDidLoad() // refresh view
+            
+          }))
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+          print("Handle Cancel Logic here")
+          }))
+        present(refreshAlert, animated: true, completion: nil)
         
-        
-        viewDidLoad()
+    
         
     }
     
     
     
     @IBAction func confirmButton(_ sender: Any) {
+        //ONLY ALLOW IF SEARCH IS COMPLETED
         
         
-        //do stuff here
+        //do update data stuff here
         
         
         viewDidLoad()
