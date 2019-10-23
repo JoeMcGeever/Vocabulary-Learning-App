@@ -21,6 +21,8 @@ class EditViewController: UIViewController {
     
     var originWord : String = ""
     var translationWord: String = ""
+    var text = ""
+    var searched = false
     
     let wordsCoreData = WordsCoreData()
     let userCoreData = UsersCoreData()
@@ -28,13 +30,18 @@ class EditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searched = false
         
         origin.delegate = self
         translation.delegate = self
+        searchWord.delegate = self
         
         searchWord.text = ""
         origin.text = ""
         translation.text = ""
+        originWord = ""
+        translationWord = ""
+        
         
         //sets the interaction to false so users cannot manipulate
         origin.isUserInteractionEnabled = false
@@ -64,7 +71,10 @@ class EditViewController: UIViewController {
     }
 
     @IBAction func searchButton(_ sender: Any) {
-        if let text = searchWord.text, !text.isEmpty{
+        
+        text = searchWord.text ?? ""
+        if  text != ""{
+            searched = true
             let searchResult = wordsCoreData.getWordPair(searchWord: text)
             
             //populate the 2 text fields with the data
@@ -77,8 +87,8 @@ class EditViewController: UIViewController {
                 //allow interaction
                 origin.isUserInteractionEnabled = true
                 translation.isUserInteractionEnabled = true
-                origin.backgroundColor = .white
-                translation.backgroundColor = .white
+                origin.backgroundColor = .none
+                translation.backgroundColor = .none
             }
             
         }
@@ -124,11 +134,15 @@ class EditViewController: UIViewController {
     
     @IBAction func confirmButton(_ sender: Any) {
         //ONLY ALLOW IF SEARCH IS COMPLETED
-        
-        
-        //do update data stuff here
-        
-        
+        originWord = origin.text ?? ""
+        translationWord = translation.text ?? ""
+        if (originWord == "" || translationWord == "") {
+            //error message
+        }
+        else if(searched == true) {
+            //do update data stuff here
+            print(wordsCoreData.updateWordPair(searchWord: text, firstWord: originWord, secondWord: translationWord))
+        }
         viewDidLoad()
     }
 

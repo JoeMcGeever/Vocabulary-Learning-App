@@ -21,9 +21,7 @@ class WordsCoreData {
             //print("Word already exists")
             return "Word already exists"
         }
-        
-        
-        
+
          //create the context
         let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Words", in: context)
@@ -32,6 +30,8 @@ class WordsCoreData {
         newUser.setValue(secondWord, forKey: "translation")
         do {
            try context.save()
+            //update recently added class:
+            recentlyAdded.sharedInstance.enqueue(origin: firstWord, translation: secondWord)
             return "Added!"
           } catch {
            return "Failed saving"
@@ -58,12 +58,8 @@ class WordsCoreData {
     }
     
     
-    
     func updateWordPair(searchWord: String, firstWord: String, secondWord: String) -> Bool{
         //this function updates a word pair
-        //untested
-        
-        //NOTE SHOULD ADD THIS TO THE RECENTLY ADDED TABLEVIEW
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
                    //refer to persistant container
@@ -76,6 +72,7 @@ class WordsCoreData {
                     let test = try context.fetch(fetchRequest)
                     print(test)
                     let itemUpdate = test[0] as! NSManagedObject
+                    
                     itemUpdate.setValue(firstWord, forKey: "origin")
                     
                     itemUpdate.setValue(secondWord, forKey: "translation")
@@ -97,6 +94,8 @@ class WordsCoreData {
     }
     
     func deleteWordPair(searchWord: String) -> Bool{
+        
+        
         return true
     }
     

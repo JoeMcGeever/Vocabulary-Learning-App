@@ -23,6 +23,7 @@
 		75CA21D2234B40BD009D65AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA21D1234B40BD009D65AD /* SettingsViewController.swift */; };
 		D80271DB235DF87C00F08CF9 /* CoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80271DA235DF87C00F08CF9 /* CoreUser.swift */; };
 		D80271DD235E02A100F08CF9 /* CoreWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80271DC235E02A100F08CF9 /* CoreWords.swift */; };
+		D8F8265623609AB900DD6265 /* recentQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F8265523609AB900DD6265 /* recentQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		75CA21D1234B40BD009D65AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D80271DA235DF87C00F08CF9 /* CoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUser.swift; sourceTree = "<group>"; };
 		D80271DC235E02A100F08CF9 /* CoreWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreWords.swift; sourceTree = "<group>"; };
+		D8F8265523609AB900DD6265 /* recentQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recentQueue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				75335E9223475A1E00E978A5 /* vocabLearner.xcdatamodeld */,
 				D80271DA235DF87C00F08CF9 /* CoreUser.swift */,
 				D80271DC235E02A100F08CF9 /* CoreWords.swift */,
+				D8F8265523609AB900DD6265 /* recentQueue.swift */,
 			);
 			path = vocabLearner;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				75335E9423475A1E00E978A5 /* vocabLearner.xcdatamodeld in Sources */,
 				75335E8A23475A1E00E978A5 /* AppDelegate.swift in Sources */,
 				75CA21CE234B407C009D65AD /* GamesViewController.swift in Sources */,
+				D8F8265623609AB900DD6265 /* recentQueue.swift in Sources */,
 				75335E8C23475A1E00E978A5 /* SceneDelegate.swift in Sources */,
 				753D20BC234DE1120075A878 /* InitialScreen.swift in Sources */,
 				75CA21D0234B4092009D65AD /* EditViewController.swift in Sources */,
