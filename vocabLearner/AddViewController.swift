@@ -23,6 +23,10 @@ class AddViewController: UIViewController {
         super.viewDidLoad()
         firstText.delegate = self
         secondText.delegate = self
+        
+        firstText.text = ""
+        secondText.text = ""
+        
         //below gets the users language details to be presented on the setting screen
         let userDetails = userCoreData.getUserDetails()
         let language = userDetails[1] //this holds the users language
