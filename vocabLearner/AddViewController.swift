@@ -45,7 +45,7 @@ class AddViewController: UIViewController {
     
     
     @IBAction func addButton(_ sender: Any) {
-        let refreshAlert = UIAlertController(title: "Are you sure?", message: "All data will be lost.", preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: "Are you sure?", message: "Word will be saved.", preferredStyle: UIAlertController.Style.alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
           print("Handle Ok logic here")
 
@@ -60,19 +60,22 @@ class AddViewController: UIViewController {
         
     
     func addWord(){
+        var message : String
+        let title = "Alert"
         if let text = firstText.text, !text.isEmpty, let text2 = secondText.text, !text2.isEmpty{
             //call module
-            if(wordsCoreData.addNewWord(firstWord: firstText.text!, secondWord: secondText.text!)){
-                print("Added!")
-            }
+            message = wordsCoreData.addNewWord(firstWord: firstText.text!, secondWord: secondText.text!)
+            
             dismiss(animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Hold on!", message: "Please fill in all the details", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok!", style: .default, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
+            message = "Please fill in all the details"
         }
         
+        //display the message depending on whether the user has inserted the data
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok!", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 }
 
