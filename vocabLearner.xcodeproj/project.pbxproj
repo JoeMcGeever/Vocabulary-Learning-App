@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7518CE7623630A9900811E4F /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518CE7523630A9900811E4F /* QuestionViewController.swift */; };
+		7518CE7823630AB100811E4F /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518CE7723630AB100811E4F /* ResultsViewController.swift */; };
+		7518CE7C23630B3C00811E4F /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518CE7B23630B3C00811E4F /* IntroductionViewController.swift */; };
+		7518CE8023630DC500811E4F /* QuestionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518CE7F23630DC500811E4F /* QuestionData.swift */; };
 		75335E8A23475A1E00E978A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75335E8923475A1E00E978A5 /* AppDelegate.swift */; };
 		75335E8C23475A1E00E978A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75335E8B23475A1E00E978A5 /* SceneDelegate.swift */; };
 		75335E8E23475A1E00E978A5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75335E8D23475A1E00E978A5 /* HomeViewController.swift */; };
@@ -44,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7518CE7523630A9900811E4F /* QuestionViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		7518CE7723630AB100811E4F /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		7518CE7B23630B3C00811E4F /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
+		7518CE7F23630DC500811E4F /* QuestionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionData.swift; sourceTree = "<group>"; };
 		75335E8623475A1E00E978A5 /* Vocab Learner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vocab Learner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75335E8923475A1E00E978A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75335E8B23475A1E00E978A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +125,9 @@
 		75335E8823475A1E00E978A5 /* vocabLearner */ = {
 			isa = PBXGroup;
 			children = (
+				7518CE7B23630B3C00811E4F /* IntroductionViewController.swift */,
+				7518CE7523630A9900811E4F /* QuestionViewController.swift */,
+				7518CE7723630AB100811E4F /* ResultsViewController.swift */,
 				753D20BB234DE1120075A878 /* InitialScreen.swift */,
 				75335E8923475A1E00E978A5 /* AppDelegate.swift */,
 				75335E8B23475A1E00E978A5 /* SceneDelegate.swift */,
@@ -133,6 +144,7 @@
 				D80271DA235DF87C00F08CF9 /* CoreUser.swift */,
 				D80271DC235E02A100F08CF9 /* CoreWords.swift */,
 				D8F8265523609AB900DD6265 /* recentQueue.swift */,
+				7518CE7F23630DC500811E4F /* QuestionData.swift */,
 			);
 			path = vocabLearner;
 			sourceTree = "<group>";
@@ -287,17 +299,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D80271DD235E02A100F08CF9 /* CoreWords.swift in Sources */,
+				7518CE7C23630B3C00811E4F /* IntroductionViewController.swift in Sources */,
 				75CA21CC234B4033009D65AD /* AddViewController.swift in Sources */,
 				75335E8E23475A1E00E978A5 /* HomeViewController.swift in Sources */,
+				7518CE7823630AB100811E4F /* ResultsViewController.swift in Sources */,
 				75335E9423475A1E00E978A5 /* vocabLearner.xcdatamodeld in Sources */,
 				75335E8A23475A1E00E978A5 /* AppDelegate.swift in Sources */,
 				75CA21CE234B407C009D65AD /* GamesViewController.swift in Sources */,
+				7518CE7623630A9900811E4F /* QuestionViewController.swift in Sources */,
 				D8F8265623609AB900DD6265 /* recentQueue.swift in Sources */,
 				75335E8C23475A1E00E978A5 /* SceneDelegate.swift in Sources */,
 				753D20BC234DE1120075A878 /* InitialScreen.swift in Sources */,
 				75CA21D0234B4092009D65AD /* EditViewController.swift in Sources */,
 				75CA21D2234B40BD009D65AD /* SettingsViewController.swift in Sources */,
 				D80271DB235DF87C00F08CF9 /* CoreUser.swift in Sources */,
+				7518CE8023630DC500811E4F /* QuestionData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
