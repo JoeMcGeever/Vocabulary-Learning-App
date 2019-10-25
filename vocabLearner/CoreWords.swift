@@ -110,7 +110,7 @@ class WordsCoreData {
         do {
             try context.save() // <- remember to put this :)
         } catch {
-            // Do something... fatalerror
+            return false
         }
         return true
     }

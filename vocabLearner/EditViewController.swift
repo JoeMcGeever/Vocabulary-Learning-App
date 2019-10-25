@@ -89,6 +89,17 @@ class EditViewController: UIViewController {
                 translation.isUserInteractionEnabled = true
                 origin.backgroundColor = .none
                 translation.backgroundColor = .none
+            } else {
+                searched = false
+                
+                origin.text = ""
+                translation.text = ""
+                //sets the interaction to false so users cannot manipulate
+                origin.isUserInteractionEnabled = false
+                translation.isUserInteractionEnabled = false
+                origin.backgroundColor = .lightGray
+                translation.backgroundColor = .lightGray
+                
             }
             
         }
