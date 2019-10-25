@@ -95,7 +95,23 @@ class WordsCoreData {
     
     func deleteWordPair(searchWord: String) -> Bool{
         
+          //refer to persistant container
+        let context = appDelegate.persistentContainer.viewContext
+        //create the context
+                    
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "Words")
+        fetchRequest.predicate = NSPredicate(format: "origin = %@ OR translation = %@", searchWord, searchWord)
         
+        let objects = try! context.fetch(fetchRequest)
+        for obj in objects {
+            context.delete(obj as! NSManagedObject)
+        }
+        
+        do {
+            try context.save() // <- remember to put this :)
+        } catch {
+            // Do something... fatalerror
+        }
         return true
     }
     

@@ -107,7 +107,7 @@ class EditViewController: UIViewController {
     
     @IBAction func deleteButton(_ sender: Any) {
         //ONLY ALLOW IF SEARCH IS COMPLETED
-        
+        if(searched == true){
         let refreshAlert = UIAlertController(title: "Are you sure?", message: "This word will be deleted.", preferredStyle: UIAlertController.Style.alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
           print("Handle Ok logic here")
@@ -125,7 +125,9 @@ class EditViewController: UIViewController {
           print("Handle Cancel Logic here")
           }))
         present(refreshAlert, animated: true, completion: nil)
-        
+        } else {
+            print("nothing was searched")
+        }
     
         
     }
