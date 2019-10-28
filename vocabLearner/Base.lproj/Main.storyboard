@@ -326,18 +326,18 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S1U-lF-R9h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1036" y="1110"/>
+            <point key="canvasLocation" x="-2463" y="1907"/>
         </scene>
         <!--Introduction View Controller-->
         <scene sceneID="GHd-X2-wzt">
             <objects>
                 <viewController id="02F-Oe-TSp" customClass="IntroductionViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="alI-wc-tXJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="YXK-Jc-ISE">
-                                <rect key="frame" x="100" y="291.5" width="175.5" height="84"/>
+                                <rect key="frame" x="100" y="254.5" width="175.5" height="138"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guess the word!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBI-9U-Z3G">
                                         <rect key="frame" x="0.0" y="0.0" width="175.5" height="30"/>
@@ -350,6 +350,13 @@
                                         <state key="normal" title="Begin!"/>
                                         <connections>
                                             <segue destination="cm1-Q3-5JZ" kind="show" id="v6y-0g-Q1W"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0od-P0-iRQ">
+                                        <rect key="frame" x="0.0" y="108" width="175.5" height="30"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <segue destination="e2X-mX-nY9" kind="unwind" unwindAction="unwindToGamePageWithSegue:" id="OEs-Oi-ZUP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -367,13 +374,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🧠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vs8-AF-j36">
-                                <rect key="frame" x="20" y="599" width="45" height="48"/>
+                                <rect key="frame" x="20" y="579" width="45" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📚" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seP-AO-qhL">
-                                <rect key="frame" x="310" y="599" width="45" height="48"/>
+                                <rect key="frame" x="310" y="579" width="45" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -394,10 +401,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PN3-ys-Nlf"/>
                     </view>
+                    <navigationItem key="navigationItem" id="NV5-oH-Kej"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B12-Zl-SwJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="e2X-mX-nY9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-767.20000000000005" y="1832.833583208396"/>
+            <point key="canvasLocation" x="-858.39999999999998" y="1996.5517241379312"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="WDc-Qy-zwo">
@@ -469,7 +478,7 @@
                         <outlet property="button2" destination="YP0-If-jCf" id="gK0-IC-fNF"/>
                         <outlet property="button3" destination="YuI-m2-kUH" id="bpb-3Q-3cd"/>
                         <outlet property="button4" destination="0mV-Pf-mwM" id="ZbS-U6-edA"/>
-                        <outlet property="progressBar" destination="FAl-zC-WvE" id="Iwj-Nm-cM1"/>
+                        <outlet property="progressBar" destination="6rx-DC-qX5" id="BKR-hu-uGH"/>
                         <outlet property="questionLabel" destination="MqP-KY-7O6" id="Q32-Fe-QPD"/>
                         <outlet property="singleStackView" destination="cu1-bQ-mjn" id="wqR-EF-FCo"/>
                         <segue destination="t4U-kx-1Ax" kind="show" identifier="ResultsSegue" id="aNH-OZ-05M"/>
@@ -477,7 +486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Jv-Pl-0If" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1015.2" y="1832.833583208396"/>
+            <point key="canvasLocation" x="1033" y="1907"/>
         </scene>
         <!--Results-->
         <scene sceneID="AIS-GS-xAX">
@@ -496,8 +505,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bz4-ce-PZI">
-                                        <rect key="frame" x="62.5" y="83.5" width="42" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bz4-ce-PZI">
+                                        <rect key="frame" x="78.5" y="83.5" width="10.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -513,12 +522,20 @@
                         <viewLayoutGuide key="safeArea" id="OPb-A9-MXy"/>
                     </view>
                     <navigationItem key="navigationItem" title="Results" id="TTG-Dc-zcN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Aas-EF-N5v"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Aas-EF-N5v">
+                            <connections>
+                                <segue destination="VSZ-io-hsy" kind="unwind" unwindAction="unwindToQuizIntroductionWithSegue:" id="6j5-PB-vGg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="scoreLabel" destination="bz4-ce-PZI" id="oHA-cN-e3y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="icF-Bq-iXw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="VSZ-io-hsy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1800.8" y="1832.833583208396"/>
+            <point key="canvasLocation" x="1900" y="1907"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="euv-UL-9MR">
@@ -544,6 +561,17 @@
                     <view key="view" contentMode="scaleToFill" id="fUJ-HA-F2Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9D-da-l29">
+                                <rect key="frame" x="101" y="314" width="181" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="BANDICOOT"/>
+                                <connections>
+                                    <segue destination="02F-Oe-TSp" kind="show" id="vHz-Pp-S46"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="2Mv-oY-sd7"/>
                     </view>
@@ -551,7 +579,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxR-n8-kiC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-196" y="919"/>
+            <point key="canvasLocation" x="-791" y="952"/>
         </scene>
         <!--Add-->
         <scene sceneID="JhE-23-COc">
@@ -661,7 +689,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZQ-XU-WjS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="1832.833583208396"/>
+            <point key="canvasLocation" x="52" y="1907"/>
         </scene>
     </scenes>
     <resources>

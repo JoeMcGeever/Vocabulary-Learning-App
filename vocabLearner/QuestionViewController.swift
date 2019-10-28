@@ -21,8 +21,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
     
-    
-    
+    //var responses = [Answer]!
     
     //instead, these must be populated from core data
     var questions : [Question] = [
@@ -34,13 +33,27 @@ class QuestionViewController: UIViewController {
                     Answer(text: "81", correct : false),
                  ]),
         Question(text: "9 + 10",
-                 answers: [
-                    Answer(text: "19", correct : true),
-                    Answer(text: "28", correct : false),
-                    Answer(text: "8", correct : false),
-                    Answer(text: "81", correct : false),
-                 ])
-        ]
+        answers: [
+           Answer(text: "19", correct : true),
+           Answer(text: "28", correct : false),
+           Answer(text: "8", correct : false),
+           Answer(text: "81", correct : false),
+        ]),
+        Question(text: "19 + 10",
+        answers: [
+           Answer(text: "29", correct : true),
+           Answer(text: "28", correct : false),
+           Answer(text: "8", correct : false),
+           Answer(text: "81", correct : false),
+        ]),
+        Question(text: "9 - 10",
+        answers: [
+           Answer(text: "-1", correct : true),
+           Answer(text: "28", correct : false),
+           Answer(text: "8", correct : false),
+           Answer(text: "81", correct : false),
+        ]),
+    ]
     
     var questionIndex = 0
     var correctAnswers = 0
@@ -70,24 +83,35 @@ class QuestionViewController: UIViewController {
         
     }
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
-        // check to see if correct like badly
+        // should add incorrect questions + answers to a var
         //also -< page 438
         switch sender {
         case button1:
             if(questions[questionIndex].answers[0].correct == true) {
                 correctAnswers += 1
+            } else {
+                //add to an incorrect question thing
             }
         case button2:
             if(questions[questionIndex].answers[1].correct == true) {
                 correctAnswers += 1
+            } else {
+                //add to an incorrect question thing
+                
             }
         case button3:
             if(questions[questionIndex].answers[2].correct == true) {
                 correctAnswers += 1
+            } else {
+                //add to an incorrect question thing
+                
             }
         case button4:
             if(questions[questionIndex].answers[3].correct == true) {
                 correctAnswers += 1
+            } else {
+                //add to an incorrect question thing
+                
             }
         default:
             break
@@ -105,6 +129,14 @@ class QuestionViewController: UIViewController {
             performSegue(withIdentifier: "ResultsSegue", sender: nil)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ResultsSegue" {
+            let resultsViewController = segue.destination as! ResultsViewController
+            resultsViewController.correctAnswers = correctAnswers
+        }
+    }
+    
 }
 
     
