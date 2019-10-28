@@ -11,11 +11,17 @@ import CoreData
 import UIKit
 
 class WordsCoreData {
+    
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     //refer to persistant container
     
     func addNewWord(firstWord: String, secondWord : String) -> String{
         //search to see if word already exists
+        //MAY NEED TO ADD A COUNT WHICH SAVES TO USER PERSISTENCE
+        //ALONG WITH SAVE ALL WORDS WITH AN ID THAT INCREMENTS (SO EQUALS THE COUNT IN PERSISTANCE)
+        //THIS IS SO WE CAN RANDOMLY GENERATE 10 NUMBERS UP TO THE COUNT
+        //FOR THE GAME
 
         if(getWordPair(searchWord: firstWord)[0] != "" || getWordPair(searchWord: secondWord)[0] != ""){
             //print("Word already exists")
@@ -113,6 +119,13 @@ class WordsCoreData {
             return false
         }
         return true
+    }
+    
+    func getTenPairs() -> Array<Question>{
+        
+        //this will be easier with a layer
+        
+        return []
     }
     
     
