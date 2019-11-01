@@ -16,7 +16,7 @@ class GamesViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(wordsCoreData.getTenPairs())
+        print(wordsCoreData.getTenPairs()[0])
         // Do any additional setup after loading the view.
     }
     

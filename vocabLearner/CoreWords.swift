@@ -164,10 +164,10 @@ class WordsCoreData {
             random1 = i
             random2 = i
             random3 = i
-            while(random1 != i || random2 != i || random3 != i){
-                random1 = Int.random(in: 0...numberOfPairs)
-                random2 = Int.random(in: 0...numberOfPairs)
-                random3 = Int.random(in: 0...numberOfPairs)
+            while(random1 == i || random2 == i || random3 == i){
+                random1 = Int.random(in: 0...numberOfPairs - 1)
+                random2 = Int.random(in: 0...numberOfPairs - 1)
+                random3 = Int.random(in: 0...numberOfPairs - 1)
             }
              wrongAnswer1 = Answer(text: objects[random1].value(forKey: "translation") as! String, correct : false)
              wrongAnswer2 = Answer(text: objects[random2].value(forKey: "translation") as! String, correct : false)
