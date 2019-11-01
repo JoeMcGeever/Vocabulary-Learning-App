@@ -61,6 +61,8 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        //get 10 questions + 4 answers, one correct
+        
     }
     
     func updateUI() {

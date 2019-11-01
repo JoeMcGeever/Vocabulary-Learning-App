@@ -10,12 +10,13 @@ import UIKit
 
 class GamesViewController: UIViewController {
 
+    let wordsCoreData = WordsCoreData()
     @IBAction func unwindToGamePage(segue: UIStoryboardSegue) {
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(wordsCoreData.getTenPairs())
         // Do any additional setup after loading the view.
     }
     

@@ -124,8 +124,68 @@ class WordsCoreData {
     func getTenPairs() -> Array<Question>{
         
         //this will be easier with a layer
+        //an advantage of core data is the ability to get all from it with little impact to performance due to a mechanism called "faulting"
+        //get all into array
+        //shuffle array
+        //take first 10
         
-        return []
+        var questions =  [Question]()
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+       
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "Words")
+        //fetchRequest.returnsObjectsAsFaults = false //THIS DISABLES FAULTING
+        
+        var objects = try! context.fetch(fetchRequest) as! [NSManagedObject]
+        
+        var question = ""
+        var answer : Answer
+        var wrongAnswer1: Answer
+        var wrongAnswer2: Answer
+        var wrongAnswer3: Answer
+        
+        //print(objects[0])
+        //print(objects[0].value(forKey: "origin") ?? "No value")
+        
+        let numberOfPairs = objects.count
+        
+        if(numberOfPairs < 10) {
+            return questions //NOTE AN EMPTY ARRAY WILL BE RETURNED
+            //IF NOT AT LEAST 10 ENTRIES
+        }
+        
+        objects = objects.shuffled() //re-orders array
+        var random1 : Int
+        var random2: Int
+        var random3: Int
+        
+        for i in 0...9 {
+            random1 = i
+            random2 = i
+            random3 = i
+            while(random1 != i || random2 != i || random3 != i){
+                random1 = Int.random(in: 0...numberOfPairs)
+                random2 = Int.random(in: 0...numberOfPairs)
+                random3 = Int.random(in: 0...numberOfPairs)
+            }
+             wrongAnswer1 = Answer(text: objects[random1].value(forKey: "translation") as! String, correct : false)
+             wrongAnswer2 = Answer(text: objects[random2].value(forKey: "translation") as! String, correct : false)
+             wrongAnswer3 = Answer(text: objects[random3].value(forKey: "translation") as! String, correct : false)
+            
+            
+            question = objects[i].value(forKey: "origin") as! String
+            answer = Answer(text: objects[i].value(forKey: "translation") as! String, correct : true)
+            
+            questions.append(Question(text: question, answers: [answer, wrongAnswer1, wrongAnswer2, wrongAnswer3]))
+            
+            //SHOULD RANDOMISE POSITION IN BANDICOOT
+            //SO JUST GUESS GAME CAN SIMPLY BE FIRST ANSWER ALWAYS TRUE
+            
+        }
+        //successfully gets 10 rando question and 4 answers, first one is correct, rest are not :D
+        
+        return questions
     }
     
     
