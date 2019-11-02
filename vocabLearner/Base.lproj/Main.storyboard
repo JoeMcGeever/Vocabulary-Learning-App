@@ -349,7 +349,7 @@
                                         <rect key="frame" x="0.0" y="54" width="175.5" height="30"/>
                                         <state key="normal" title="Begin!"/>
                                         <connections>
-                                            <segue destination="cm1-Q3-5JZ" kind="show" id="v6y-0g-Q1W"/>
+                                            <segue destination="cm1-Q3-5JZ" kind="show" identifier="homePage" id="v6y-0g-Q1W"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0od-P0-iRQ">
@@ -417,40 +417,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cu1-bQ-mjn">
-                                <rect key="frame" x="20" y="233.5" width="46" height="180"/>
+                                <rect key="frame" x="20" y="233.5" width="30" height="180"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVl-Kt-sk5">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <connections>
                                             <action selector="singleAnswerButtonPressed:" destination="VEp-Zj-p1C" eventType="touchUpInside" id="VXF-GP-Sbm"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YP0-If-jCf">
-                                        <rect key="frame" x="0.0" y="50" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="50" width="30" height="30"/>
                                         <connections>
                                             <action selector="singleAnswerButtonPressed:" destination="VEp-Zj-p1C" eventType="touchUpInside" id="BYr-RZ-3Tg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YuI-m2-kUH">
-                                        <rect key="frame" x="0.0" y="100" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="100" width="30" height="30"/>
                                         <connections>
                                             <action selector="singleAnswerButtonPressed:" destination="VEp-Zj-p1C" eventType="touchUpInside" id="byY-0m-VDo"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mV-Pf-mwM">
-                                        <rect key="frame" x="0.0" y="150" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="150" width="30" height="30"/>
                                         <connections>
                                             <action selector="singleAnswerButtonPressed:" destination="VEp-Zj-p1C" eventType="touchUpInside" id="62c-up-nJD"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqP-KY-7O6">
-                                <rect key="frame" x="0.0" y="70" width="375" height="38.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqP-KY-7O6">
+                                <rect key="frame" x="0.0" y="70" width="375" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -486,7 +482,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Jv-Pl-0If" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1033" y="1907"/>
+            <point key="canvasLocation" x="1036" y="1744"/>
         </scene>
         <!--Results-->
         <scene sceneID="AIS-GS-xAX">

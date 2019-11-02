@@ -10,7 +10,11 @@ import UIKit
 
 class QuestionViewController: UIViewController {
     
+
     
+    let wordsCoreData = WordsCoreData()
+    
+    var questions : Array<Question> = []
     @IBOutlet weak var singleStackView: UIStackView!
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -21,47 +25,30 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
     
-    //var responses = [Answer]!
+    var randomNumbers = [0,1,2,3]
+    var a = 0
+    var b = 1
+    var c = 2
+    var d = 3
     
-    //instead, these must be populated from core data
-    var questions : [Question] = [
-        Question(text: "9 + 9",
-                 answers: [
-                    Answer(text: "18", correct : true),
-                    Answer(text: "28", correct : false),
-                    Answer(text: "8", correct : false),
-                    Answer(text: "81", correct : false),
-                 ]),
-        Question(text: "9 + 10",
-        answers: [
-           Answer(text: "19", correct : true),
-           Answer(text: "28", correct : false),
-           Answer(text: "8", correct : false),
-           Answer(text: "81", correct : false),
-        ]),
-        Question(text: "19 + 10",
-        answers: [
-           Answer(text: "29", correct : true),
-           Answer(text: "28", correct : false),
-           Answer(text: "8", correct : false),
-           Answer(text: "81", correct : false),
-        ]),
-        Question(text: "9 - 10",
-        answers: [
-           Answer(text: "-1", correct : true),
-           Answer(text: "28", correct : false),
-           Answer(text: "8", correct : false),
-           Answer(text: "81", correct : false),
-        ]),
-    ]
     
     var questionIndex = 0
     var correctAnswers = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
-        //get 10 questions + 4 answers, one correct
+        questions = wordsCoreData.getTenPairs() ?? [Question(text: "", answers: [Answer(text: "", correct: false)])]
+        if(questions[0].text == ""){
+            let alert = UIAlertController(title: "Cannot play", message: "You need at least 10 word pairs to play", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok!", style: .default) { (action) in self.performSegue(withIdentifier: "ResultsSegue", sender : action)}
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            
+            
+        }else {
+            updateUI()
+        }
+        //get the 10 pairs of words        //get 10 questions + 4 answers, one correct
         
     }
     
@@ -78,10 +65,17 @@ class QuestionViewController: UIViewController {
     }
     
     func updateSingleStack(using answers: [Answer]) {
-        button1.setTitle(answers[0].text, for: .normal)
-        button2.setTitle(answers[1].text, for: .normal)
-        button3.setTitle(answers[2].text, for: .normal)
-        button4.setTitle(answers[3].text, for: .normal)
+        
+        randomNumbers = randomNumbers.shuffled()
+        a = randomNumbers[0]
+        b = randomNumbers[1]
+        c = randomNumbers[2]
+        d = randomNumbers[3]
+        
+        button1.setTitle(answers[a].text, for: .normal)
+        button2.setTitle(answers[b].text, for: .normal)
+        button3.setTitle(answers[c].text, for: .normal)
+        button4.setTitle(answers[d].text, for: .normal)
         
     }
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
@@ -89,27 +83,27 @@ class QuestionViewController: UIViewController {
         //also -< page 438
         switch sender {
         case button1:
-            if(questions[questionIndex].answers[0].correct == true) {
+            if(questions[questionIndex].answers[a].correct == true) {
                 correctAnswers += 1
             } else {
                 //add to an incorrect question thing
             }
         case button2:
-            if(questions[questionIndex].answers[1].correct == true) {
+            if(questions[questionIndex].answers[b].correct == true) {
                 correctAnswers += 1
             } else {
                 //add to an incorrect question thing
                 
             }
         case button3:
-            if(questions[questionIndex].answers[2].correct == true) {
+            if(questions[questionIndex].answers[c].correct == true) {
                 correctAnswers += 1
             } else {
                 //add to an incorrect question thing
                 
             }
         case button4:
-            if(questions[questionIndex].answers[3].correct == true) {
+            if(questions[questionIndex].answers[d].correct == true) {
                 correctAnswers += 1
             } else {
                 //add to an incorrect question thing

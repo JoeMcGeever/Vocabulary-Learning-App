@@ -121,7 +121,7 @@ class WordsCoreData {
         return true
     }
     
-    func getTenPairs() -> Array<Question>{
+    func getTenPairs() -> Array<Question>?{
         
         //this will be easier with a layer
         //an advantage of core data is the ability to get all from it with little impact to performance due to a mechanism called "faulting"
@@ -151,7 +151,7 @@ class WordsCoreData {
         let numberOfPairs = objects.count
         
         if(numberOfPairs < 10) {
-            return questions //NOTE AN EMPTY ARRAY WILL BE RETURNED
+            return nil //NOTE AN EMPTY ARRAY WILL BE RETURNED
             //IF NOT AT LEAST 10 ENTRIES
         }
         
@@ -164,7 +164,7 @@ class WordsCoreData {
             random1 = i
             random2 = i
             random3 = i
-            while(random1 == i || random2 == i || random3 == i){
+            while(random1 == i || random2 == i || random3 == i || random1 == random2 || random1 == random3 || random2 == random3){
                 random1 = Int.random(in: 0...numberOfPairs - 1)
                 random2 = Int.random(in: 0...numberOfPairs - 1)
                 random3 = Int.random(in: 0...numberOfPairs - 1)
@@ -179,11 +179,9 @@ class WordsCoreData {
             
             questions.append(Question(text: question, answers: [answer, wrongAnswer1, wrongAnswer2, wrongAnswer3]))
             
-            //SHOULD RANDOMISE POSITION IN BANDICOOT
-            //SO JUST GUESS GAME CAN SIMPLY BE FIRST ANSWER ALWAYS TRUE
-            
+
         }
-        //successfully gets 10 rando question and 4 answers, first one is correct, rest are not :D
+
         
         return questions
     }

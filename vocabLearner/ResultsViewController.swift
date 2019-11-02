@@ -17,7 +17,6 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         scoreLabel.text = "\(correctAnswers)"
-        // Do any additional setup after loading the view.
     }
     
 
