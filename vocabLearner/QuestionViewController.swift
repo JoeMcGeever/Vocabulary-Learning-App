@@ -19,11 +19,17 @@ class QuestionViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var progressBar: UIProgressView!
+    @IBOutlet weak var oneQResult: UILabel!
     
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
+    @IBAction func nextQuestionButton(_ sender: Any) {
+        nextQuestion()
+    }
+    @IBOutlet weak var nextQuestionButton: UIButton!
+    
     
     var randomNumbers = [0,1,2,3]
     var a = 0
@@ -53,6 +59,10 @@ class QuestionViewController: UIViewController {
     }
     
     func updateUI() {
+        oneQResult.text = ""
+        nextQuestionButton.isUserInteractionEnabled = false
+        nextQuestionButton.setTitleColor(.lightGray, for: .normal)
+        
         navigationItem.title = "Question \(questionIndex+1)"
         let currentQuestion = questions[questionIndex]
         let currentAnswers = currentQuestion.answers
@@ -79,41 +89,52 @@ class QuestionViewController: UIViewController {
         
     }
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
-        // should add incorrect questions + answers to a var
-        //also -< page 438
+        var correctAnsPos = 0
+        for i in 0...3{
+            if(questions[questionIndex].answers[i].correct == true) {
+                correctAnsPos = i
+                break
+            }
+        }
         switch sender {
         case button1:
             if(questions[questionIndex].answers[a].correct == true) {
                 correctAnswers += 1
+                oneQResult.text = "Correct!"
             } else {
-                //add to an incorrect question thing
+                oneQResult.text = "Incorrect. The correct answer is: \(questions[questionIndex].answers[correctAnsPos].text)"
             }
         case button2:
             if(questions[questionIndex].answers[b].correct == true) {
                 correctAnswers += 1
+                oneQResult.text = "Correct!"
+
             } else {
-                //add to an incorrect question thing
+                oneQResult.text = "Incorrect. The correct answer is: \(questions[questionIndex].answers[correctAnsPos].text)"
                 
             }
         case button3:
             if(questions[questionIndex].answers[c].correct == true) {
                 correctAnswers += 1
+                oneQResult.text = "Correct!"
+                
             } else {
-                //add to an incorrect question thing
+                oneQResult.text = "Incorrect. The correct answer is: \(questions[questionIndex].answers[correctAnsPos].text)"
                 
             }
         case button4:
             if(questions[questionIndex].answers[d].correct == true) {
                 correctAnswers += 1
+                oneQResult.text = "Correct!"
             } else {
-                //add to an incorrect question thing
+                oneQResult.text = "Incorrect. The correct answer is: \(questions[questionIndex].answers[correctAnsPos].text)"
                 
             }
         default:
             break
         }
-        
-        nextQuestion()
+        nextQuestionButton.isUserInteractionEnabled = true
+        nextQuestionButton.setTitleColor(.none, for: .normal)
         
     }
     

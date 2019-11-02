@@ -454,17 +454,36 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6rx-DC-qX5">
                                 <rect key="frame" x="36" y="625" width="303" height="2"/>
                             </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNl-gv-UXH">
+                                <rect key="frame" x="15" y="580" width="345" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextQuestionButton:" destination="VEp-Zj-p1C" eventType="touchUpInside" id="T5e-ie-5ox"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="waiting..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwi-2g-Job">
+                                <rect key="frame" x="15" y="519.5" width="345" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="MqP-KY-7O6" firstAttribute="leading" secondItem="RCe-bV-igK" secondAttribute="leading" id="Bvk-ed-Q6s"/>
+                            <constraint firstItem="XNl-gv-UXH" firstAttribute="top" secondItem="uwi-2g-Job" secondAttribute="bottom" constant="40" id="HqA-FC-k1h"/>
                             <constraint firstItem="MqP-KY-7O6" firstAttribute="top" secondItem="RCe-bV-igK" secondAttribute="top" constant="14" id="PrC-ib-eZx"/>
                             <constraint firstItem="6rx-DC-qX5" firstAttribute="leading" secondItem="FAl-zC-WvE" secondAttribute="leadingMargin" constant="20" id="QUb-2B-Aei"/>
                             <constraint firstItem="MqP-KY-7O6" firstAttribute="trailing" secondItem="RCe-bV-igK" secondAttribute="trailing" id="YBC-GK-DWo"/>
+                            <constraint firstItem="RCe-bV-igK" firstAttribute="trailing" secondItem="uwi-2g-Job" secondAttribute="trailing" constant="15" id="aUS-7b-Wf9"/>
                             <constraint firstItem="RCe-bV-igK" firstAttribute="bottom" secondItem="6rx-DC-qX5" secondAttribute="bottom" constant="20" id="e3p-lc-UUc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6rx-DC-qX5" secondAttribute="trailing" constant="20" id="fb0-Gy-s6i"/>
+                            <constraint firstItem="6rx-DC-qX5" firstAttribute="top" secondItem="XNl-gv-UXH" secondAttribute="bottom" constant="15" id="hrx-4O-zpY"/>
+                            <constraint firstItem="RCe-bV-igK" firstAttribute="trailing" secondItem="XNl-gv-UXH" secondAttribute="trailing" constant="15" id="sgr-MY-9Gt"/>
+                            <constraint firstItem="XNl-gv-UXH" firstAttribute="leading" secondItem="RCe-bV-igK" secondAttribute="leading" constant="15" id="vBG-QL-Wc4"/>
                             <constraint firstItem="cu1-bQ-mjn" firstAttribute="leading" secondItem="RCe-bV-igK" secondAttribute="leading" constant="20" id="w0L-7a-P1X"/>
                             <constraint firstItem="cu1-bQ-mjn" firstAttribute="centerY" secondItem="FAl-zC-WvE" secondAttribute="centerY" id="w5P-DI-KNP"/>
+                            <constraint firstItem="uwi-2g-Job" firstAttribute="leading" secondItem="RCe-bV-igK" secondAttribute="leading" constant="15" id="xjV-DL-9YU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RCe-bV-igK"/>
                     </view>
@@ -474,6 +493,8 @@
                         <outlet property="button2" destination="YP0-If-jCf" id="gK0-IC-fNF"/>
                         <outlet property="button3" destination="YuI-m2-kUH" id="bpb-3Q-3cd"/>
                         <outlet property="button4" destination="0mV-Pf-mwM" id="ZbS-U6-edA"/>
+                        <outlet property="nextQuestionButton" destination="XNl-gv-UXH" id="08X-s4-9zg"/>
+                        <outlet property="oneQResult" destination="uwi-2g-Job" id="y6M-cD-C0k"/>
                         <outlet property="progressBar" destination="6rx-DC-qX5" id="BKR-hu-uGH"/>
                         <outlet property="questionLabel" destination="MqP-KY-7O6" id="Q32-Fe-QPD"/>
                         <outlet property="singleStackView" destination="cu1-bQ-mjn" id="wqR-EF-FCo"/>
@@ -482,7 +503,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Jv-Pl-0If" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036" y="1744"/>
+            <point key="canvasLocation" x="1036" y="1743.778110944528"/>
         </scene>
         <!--Results-->
         <scene sceneID="AIS-GS-xAX">
