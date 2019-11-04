@@ -651,31 +651,31 @@
                                 <rect key="frame" x="20" y="76" width="335" height="449.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translate this word:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5A-yz-dBe">
-                                        <rect key="frame" x="14" y="0.0" width="307" height="42"/>
-                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="32"/>
+                                        <rect key="frame" x="52.5" y="0.0" width="230.5" height="21"/>
+                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DELETE TEXT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cws-vP-xPc">
-                                        <rect key="frame" x="95.5" y="110" width="144" height="31.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DELETE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cws-vP-xPc">
+                                        <rect key="frame" x="126" y="89" width="83" height="31.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0er-zO-tD6">
-                                        <rect key="frame" x="139" y="209.5" width="57" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CGx-BW-9dR">
-                                        <rect key="frame" x="67.5" y="306.5" width="200" height="36"/>
+                                        <rect key="frame" x="67.5" y="188.5" width="200" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="DaK-wF-Z0Y"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0er-zO-tD6">
+                                        <rect key="frame" x="142.5" y="292.5" width="50" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwN-90-mU7">
                                         <rect key="frame" x="129" y="410.5" width="77" height="39"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -706,7 +706,7 @@
                         <outlet property="confirm" destination="UwN-90-mU7" id="7dr-mU-v9b"/>
                         <outlet property="nextButton" destination="2Ei-62-w4m" id="eLK-eR-JVX"/>
                         <outlet property="origin" destination="Cws-vP-xPc" id="7Nn-fM-prT"/>
-                        <outlet property="progressBar" destination="Ptv-NQ-jc1" id="1aE-ZC-WER"/>
+                        <outlet property="progressBar" destination="OBv-wl-3De" id="t62-Um-VPp"/>
                         <outlet property="response" destination="0er-zO-tD6" id="D06-uo-1d0"/>
                         <outlet property="translation" destination="CGx-BW-9dR" id="Uv3-M2-Jci"/>
                         <segue destination="0o7-SG-iRk" kind="show" identifier="TranslateResultsSegue" id="21q-Zl-Go5"/>

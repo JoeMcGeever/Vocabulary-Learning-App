@@ -36,6 +36,7 @@ class TranslateQuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        translation.delegate = self //so it can return from keyboard
         questions = wordsCoreData.getTenPairs() ?? [Question(text: "", answers: [Answer(text: "", correct: false)])]
         if(questions[0].text == ""){
             let alert = UIAlertController(title: "Cannot play", message: "You need at least 10 word pairs to play", preferredStyle: .alert)
@@ -54,33 +55,47 @@ class TranslateQuestionViewController: UIViewController {
     
     @IBAction func confirm(_ sender: Any) {
         //check answer is correct here - similar to singleAnswerButton.. func
-        if(currentAnswer == translation.text){
+        if let text = translation.text, text.isEmpty{
+            response.text = "Enter something first"
+        } else if (currentAnswer == translation.text){
             correctAnswers += 1
             response.text = "Correct!"
+            confirm.isUserInteractionEnabled = false
+            
+            nextButton.isUserInteractionEnabled = true
+            nextButton.setTitleColor(.none, for: .normal)
         } else {
-            response.text = "Incorrect, here is the correct answer:"
+            response.text = "Incorrect. Above is the correct answer"
             translation.text = currentAnswer
+            confirm.isUserInteractionEnabled = false
+            
+            nextButton.isUserInteractionEnabled = true
+            nextButton.setTitleColor(.none, for: .normal)
+            
         }
-        nextButton.isUserInteractionEnabled = true
-        nextButton.setTitleColor(.none, for: .normal)
         
     }
     
     func updateUI() {
         translation.text = ""
+        response.text = ""
+        confirm.isUserInteractionEnabled = true
         nextButton.isUserInteractionEnabled = false
         nextButton.setTitleColor(.lightGray, for: .normal)
         
         
         navigationItem.title = "Question \(questionIndex+1)"
         let currentQuestion = questions[questionIndex]
-        currentAnswer = currentQuestion.answers[0].text //as the first answer is always the correct one (see the coreWords file. Fucntion: getTenPairs
+        currentAnswer = currentQuestion.text //as the first answer is always the correct one (see the coreWords file. Fucntion: getTenPairs
+        
+        
+        
         let totalProgress = Float(questionIndex+1) / Float(questions.count)
         
-        print("ALLES GUT HIER")
-        origin.text = currentQuestion.text
+
+        origin.text = currentQuestion.answers[0].text
         progressBar.setProgress(totalProgress, animated: true)
-        print("ALLES GUT HIER")
+
         
     }
     
@@ -95,9 +110,17 @@ class TranslateQuestionViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ResultsSegue" {
-            let resultsViewController = segue.destination as! ResultsViewController
+        if segue.identifier == "TranslateResultsSegue" {
+            let resultsViewController = segue.destination as! TranslateResultsViewController
             resultsViewController.correctAnswers = correctAnswers
         }
+    }
+}
+
+extension TranslateQuestionViewController : UITextFieldDelegate {
+
+func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
