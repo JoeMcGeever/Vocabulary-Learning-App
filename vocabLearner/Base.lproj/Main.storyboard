@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X85-vc-2rD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zVz-7q-31P">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -408,10 +408,10 @@
             </objects>
             <point key="canvasLocation" x="-791" y="1997"/>
         </scene>
-        <!--View Controller-->
+        <!--Translate Introduction View Controller-->
         <scene sceneID="AA0-Cf-sfG">
             <objects>
-                <viewController id="zVz-7q-31P" sceneMemberID="viewController">
+                <viewController id="zVz-7q-31P" customClass="TranslateIntroductionViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zrc-ap-LJf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -629,18 +629,86 @@
             </objects>
             <point key="canvasLocation" x="1988" y="1997"/>
         </scene>
-        <!--View Controller-->
+        <!--Translate Question View Controller-->
         <scene sceneID="2Ci-WI-MMD">
             <objects>
-                <viewController id="d7y-6X-gB1" sceneMemberID="viewController">
+                <viewController id="d7y-6X-gB1" customClass="TranslateQuestionViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ptv-NQ-jc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OBv-wl-3De">
+                                <rect key="frame" x="36" y="625" width="303" height="2"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ei-62-w4m">
+                                <rect key="frame" x="171.5" y="555" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="nextButton:" destination="d7y-6X-gB1" eventType="touchUpInside" id="sSk-iT-Lrg"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="68" translatesAutoresizingMaskIntoConstraints="NO" id="8bs-0n-DEw">
+                                <rect key="frame" x="20" y="76" width="335" height="449.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translate this word:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5A-yz-dBe">
+                                        <rect key="frame" x="14" y="0.0" width="307" height="42"/>
+                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="32"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DELETE TEXT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cws-vP-xPc">
+                                        <rect key="frame" x="95.5" y="110" width="144" height="31.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0er-zO-tD6">
+                                        <rect key="frame" x="139" y="209.5" width="57" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CGx-BW-9dR">
+                                        <rect key="frame" x="67.5" y="306.5" width="200" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="DaK-wF-Z0Y"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwN-90-mU7">
+                                        <rect key="frame" x="129" y="410.5" width="77" height="39"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Confirm"/>
+                                        <connections>
+                                            <action selector="confirm:" destination="d7y-6X-gB1" eventType="touchUpInside" id="ToP-D0-M5D"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8bs-0n-DEw" firstAttribute="leading" secondItem="5eT-W4-U9K" secondAttribute="leading" constant="20" id="1Ib-jh-ChO"/>
+                            <constraint firstItem="2Ei-62-w4m" firstAttribute="top" secondItem="8bs-0n-DEw" secondAttribute="bottom" constant="29.5" id="FYT-Ww-s1X"/>
+                            <constraint firstItem="5eT-W4-U9K" firstAttribute="bottom" secondItem="OBv-wl-3De" secondAttribute="bottom" constant="20" id="GLa-D1-3mp"/>
+                            <constraint firstItem="OBv-wl-3De" firstAttribute="top" secondItem="2Ei-62-w4m" secondAttribute="bottom" constant="40" id="R9I-gs-diZ"/>
+                            <constraint firstItem="2Ei-62-w4m" firstAttribute="centerX" secondItem="Ptv-NQ-jc1" secondAttribute="centerX" id="Vx0-qu-mbR"/>
+                            <constraint firstItem="8bs-0n-DEw" firstAttribute="top" secondItem="5eT-W4-U9K" secondAttribute="top" constant="20" id="Yoq-lD-MTi"/>
+                            <constraint firstItem="OBv-wl-3De" firstAttribute="leading" secondItem="Ptv-NQ-jc1" secondAttribute="leadingMargin" constant="20" id="fRB-0r-dhe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OBv-wl-3De" secondAttribute="trailing" constant="20" id="qVo-M7-cZb"/>
+                            <constraint firstItem="5eT-W4-U9K" firstAttribute="trailing" secondItem="8bs-0n-DEw" secondAttribute="trailing" constant="20" id="qWf-A5-8Le"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5eT-W4-U9K"/>
                     </view>
                     <navigationItem key="navigationItem" id="qNm-OH-ybb"/>
                     <connections>
+                        <outlet property="confirm" destination="UwN-90-mU7" id="7dr-mU-v9b"/>
+                        <outlet property="nextButton" destination="2Ei-62-w4m" id="eLK-eR-JVX"/>
+                        <outlet property="origin" destination="Cws-vP-xPc" id="7Nn-fM-prT"/>
+                        <outlet property="progressBar" destination="Ptv-NQ-jc1" id="1aE-ZC-WER"/>
+                        <outlet property="response" destination="0er-zO-tD6" id="D06-uo-1d0"/>
+                        <outlet property="translation" destination="CGx-BW-9dR" id="Uv3-M2-Jci"/>
                         <segue destination="0o7-SG-iRk" kind="show" identifier="TranslateResultsSegue" id="21q-Zl-Go5"/>
                     </connections>
                 </viewController>
@@ -651,7 +719,7 @@
         <!--Results-->
         <scene sceneID="l0N-5V-gTK">
             <objects>
-                <viewController id="0o7-SG-iRk" sceneMemberID="viewController">
+                <viewController id="0o7-SG-iRk" customClass="TranslateResultsViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wIs-O7-ZMv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -683,10 +751,18 @@
                         <viewLayoutGuide key="safeArea" id="jNU-tY-Sv0"/>
                     </view>
                     <navigationItem key="navigationItem" title="Results" id="s5F-s2-sNR">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="vrh-O9-ysQ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="vrh-O9-ysQ">
+                            <connections>
+                                <segue destination="CDi-6c-GEu" kind="unwind" unwindAction="unwindToTranslateIntroductionWithSegue:" id="YZ7-F2-3l7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="scoreLabel" destination="A5c-12-92u" id="Ci7-oo-fDV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5T-jd-ykz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="CDi-6c-GEu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2006" y="2731"/>
         </scene>
