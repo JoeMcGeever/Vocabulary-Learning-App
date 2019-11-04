@@ -90,7 +90,7 @@ class QuestionViewController: UIViewController {
     }
     @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
         var correctAnsPos = 0
-        for i in 0...3{
+        for i in 0...3{ //gets the position of which answer is correct
             if(questions[questionIndex].answers[i].correct == true) {
                 correctAnsPos = i
                 break
