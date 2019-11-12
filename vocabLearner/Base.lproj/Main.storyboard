@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zVz-7q-31P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X85-vc-2rD">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -88,7 +88,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View recently added"/>
                                 <connections>
-                                    <segue destination="vrx-32-7PC" kind="show" id="N2f-Ot-6vv"/>
+                                    <segue destination="eEE-d4-s8B" kind="show" id="xeM-TV-g1W"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8to-Yq-eyI">
@@ -302,18 +302,34 @@
         <!--Root View Controller-->
         <scene sceneID="epN-ln-4iz">
             <objects>
-                <tableViewController id="eEE-d4-s8B" sceneMemberID="viewController">
+                <tableViewController id="eEE-d4-s8B" customClass="RecentWordsTableViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZDP-zS-5Nz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZsX-hx-iWT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="wordCell" textLabel="ueD-AE-VPd" detailTextLabel="STF-xG-cEi" style="IBUITableViewCellStyleValue1" id="ZsX-hx-iWT">
                                 <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZsX-hx-iWT" id="u1Q-SD-iJL">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ueD-AE-VPd">
+                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="STF-xG-cEi">
+                                            <rect key="frame" x="315" y="12" width="44" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -326,7 +342,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S1U-lF-R9h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2463" y="1907"/>
+            <point key="canvasLocation" x="-2068" y="1057"/>
         </scene>
         <!--Introduction View Controller-->
         <scene sceneID="GHd-X2-wzt">
@@ -413,7 +429,7 @@
             <objects>
                 <viewController id="zVz-7q-31P" customClass="TranslateIntroductionViewController" customModule="Vocab_Learner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zrc-ap-LJf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇪🇸" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTt-Bu-ex7">
@@ -429,19 +445,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="♥️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqg-71-2Ii">
-                                <rect key="frame" x="20" y="599" width="45" height="48"/>
+                                <rect key="frame" x="20" y="579" width="45" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇩🇪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkX-Tv-i1s">
-                                <rect key="frame" x="310" y="599" width="45" height="48"/>
+                                <rect key="frame" x="310" y="579" width="45" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="MJa-QQ-m9D">
-                                <rect key="frame" x="120" y="262.5" width="135.5" height="142.5"/>
+                                <rect key="frame" x="120" y="252.5" width="135.5" height="142.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translate!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rd8-r1-dNu">
                                         <rect key="frame" x="0.0" y="0.0" width="135.5" height="34.5"/>
@@ -459,6 +475,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuR-mN-Ou8">
                                         <rect key="frame" x="0.0" y="112.5" width="135.5" height="30"/>
                                         <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <segue destination="gLl-MV-WqC" kind="unwind" unwindAction="unwindToGamePageWithSegue:" id="Ctx-p4-vT8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -478,10 +497,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3vR-7Y-Yzg"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Gob-Fs-vMd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOB-bW-q99" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="gLl-MV-WqC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-791" y="2731"/>
+            <point key="canvasLocation" x="-1585" y="2731"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="WDc-Qy-zwo">
@@ -766,23 +787,6 @@
             </objects>
             <point key="canvasLocation" x="2006" y="2731"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="euv-UL-9MR">
-            <objects>
-                <navigationController id="vrx-32-7PC" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="1Cy-41-4cS"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jQE-ol-jMW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="eEE-d4-s8B" kind="showDetail" id="4PS-C5-WHJ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UjW-uq-HgE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2462" y="1034"/>
-        </scene>
         <!--Games-->
         <scene sceneID="EkP-Kq-qwu">
             <objects>
@@ -797,6 +801,15 @@
                                 <state key="normal" title="BANDICOOT"/>
                                 <connections>
                                     <segue destination="02F-Oe-TSp" kind="show" id="vHz-Pp-S46"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHi-dc-sob">
+                                <rect key="frame" x="123" y="363" width="132" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <state key="normal" title="Translate"/>
+                                <connections>
+                                    <segue destination="zVz-7q-31P" kind="show" id="n1K-Pb-5xZ"/>
                                 </connections>
                             </button>
                         </subviews>
