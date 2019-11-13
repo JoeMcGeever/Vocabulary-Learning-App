@@ -10,12 +10,15 @@ import UIKit
 
 class RecentWordsTableViewController: UITableViewController {
     
-    var words: Array<word> = [word(origin: "cat", translation: "die Katze"), word(origin: "dog", translation: "der Hund")
-    ]
+    let wordsCoreData = WordsCoreData()//to delete words /edit
+    
+    
+    var words: Array<word> = []
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        words = RecentlyAdded.sharedInstance.getArray()
 
     }
     
@@ -58,6 +61,10 @@ class RecentWordsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) { //enable swipe to delete
         //acc delete from dB here
      if editingStyle == .delete {
+        let word = words[indexPath.row]
+        print("\(word.origin), \(word.translation) was deleted")
+        wordsCoreData.deleteWordPair(searchWord: word.origin) //delete out of core data
+        RecentlyAdded.sharedInstance.removeItem(originToRemove: word.origin) //delete out of array
         self.words.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
      }

@@ -17,11 +17,7 @@ class WordsCoreData {
     //refer to persistant container
     
     func addNewWord(firstWord: String, secondWord : String) -> String{
-        //search to see if word already exists
-        //MAY NEED TO ADD A COUNT WHICH SAVES TO USER PERSISTENCE
-        //ALONG WITH SAVE ALL WORDS WITH AN ID THAT INCREMENTS (SO EQUALS THE COUNT IN PERSISTANCE)
-        //THIS IS SO WE CAN RANDOMLY GENERATE 10 NUMBERS UP TO THE COUNT
-        //FOR THE GAME
+
 
         if(getWordPair(searchWord: firstWord)[0] != "" || getWordPair(searchWord: secondWord)[0] != ""){
             //print("Word already exists")
@@ -37,7 +33,7 @@ class WordsCoreData {
         do {
            try context.save()
             //update recently added class:
-            recentlyAdded.sharedInstance.enqueue(origin: firstWord, translation: secondWord)
+            RecentlyAdded.sharedInstance.enqueue(origin: firstWord, translation: secondWord)
             return "Added!"
           } catch {
            return "Failed saving"

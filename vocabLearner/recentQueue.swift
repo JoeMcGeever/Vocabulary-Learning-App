@@ -15,8 +15,8 @@ struct word {
 
 
 
-class recentlyAdded{
-    static let sharedInstance = recentlyAdded() //singleton class
+class RecentlyAdded{
+    static let sharedInstance = RecentlyAdded() //singleton class
     //so only one is manipulated
     
     var item: Array<word> = []
@@ -33,6 +33,16 @@ class recentlyAdded{
     
     func getArray() -> Array<word> {
         return item
+    }
+    
+    func removeItem(originToRemove: String){
+        for i in 0...item.count {
+            if(item[i].origin == originToRemove) {
+                item.remove(at: i)
+                break
+            }
+        }
+        
     }
     
 }
