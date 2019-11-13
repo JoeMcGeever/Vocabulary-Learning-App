@@ -35,7 +35,7 @@ class RecentlyAdded{
         return item
     }
     
-    func removeItem(originToRemove: String){
+    func removeItem(originToRemove: String){ //removes item from array when deleted from recently added
         for i in 0...item.count {
             if(item[i].origin == originToRemove) {
                 item.remove(at: i)

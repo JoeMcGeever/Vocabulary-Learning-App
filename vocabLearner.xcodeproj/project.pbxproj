@@ -71,7 +71,7 @@
 		75335EAA23475A2000E978A5 /* vocabLearnerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vocabLearnerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75335EAE23475A2000E978A5 /* vocabLearnerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vocabLearnerUITests.swift; sourceTree = "<group>"; };
 		75335EB023475A2000E978A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		753D20BB234DE1120075A878 /* InitialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InitialScreen.swift; path = ../InitialScreen.swift; sourceTree = "<group>"; };
+		753D20BB234DE1120075A878 /* InitialScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreen.swift; sourceTree = "<group>"; };
 		75CA21CB234B4033009D65AD /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		75CA21CD234B407C009D65AD /* GamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
 		75CA21CF234B4092009D65AD /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
@@ -133,30 +133,15 @@
 		75335E8823475A1E00E978A5 /* vocabLearner */ = {
 			isa = PBXGroup;
 			children = (
-				7518CE7B23630B3C00811E4F /* IntroductionViewController.swift */,
-				7518CE7523630A9900811E4F /* QuestionViewController.swift */,
-				7518CE7723630AB100811E4F /* ResultsViewController.swift */,
-				753D20BB234DE1120075A878 /* InitialScreen.swift */,
+				7575F34C237C159200426559 /* Controller */,
+				7575F34B237C158700426559 /* Model */,
+				7575F34A237C154900426559 /* View */,
 				75335E8923475A1E00E978A5 /* AppDelegate.swift */,
 				75335E8B23475A1E00E978A5 /* SceneDelegate.swift */,
-				75335E8D23475A1E00E978A5 /* HomeViewController.swift */,
 				75335E8F23475A1E00E978A5 /* Main.storyboard */,
-				D8CDBBCA237089680029A624 /* TranslateQuestionViewController.swift */,
-				D8CDBBCC2370898B0029A624 /* TranslateResultsViewController.swift */,
-				D8CDBBCE2370899F0029A624 /* TranslateIntroductionViewController.swift */,
-				75CA21D1234B40BD009D65AD /* SettingsViewController.swift */,
-				75CA21CF234B4092009D65AD /* EditViewController.swift */,
-				75CA21CD234B407C009D65AD /* GamesViewController.swift */,
-				75CA21CB234B4033009D65AD /* AddViewController.swift */,
 				75335E9523475A2000E978A5 /* Assets.xcassets */,
-				75335E9723475A2000E978A5 /* LaunchScreen.storyboard */,
 				75335E9A23475A2000E978A5 /* Info.plist */,
 				75335E9223475A1E00E978A5 /* vocabLearner.xcdatamodeld */,
-				D80271DA235DF87C00F08CF9 /* CoreUser.swift */,
-				D80271DC235E02A100F08CF9 /* CoreWords.swift */,
-				D8F8265523609AB900DD6265 /* recentQueue.swift */,
-				7518CE7F23630DC500811E4F /* QuestionData.swift */,
-				D8847854237AFF2B00AC3736 /* RecentWordsTableViewController.swift */,
 			);
 			path = vocabLearner;
 			sourceTree = "<group>";
@@ -177,6 +162,45 @@
 				75335EB023475A2000E978A5 /* Info.plist */,
 			);
 			path = vocabLearnerUITests;
+			sourceTree = "<group>";
+		};
+		7575F34A237C154900426559 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75335E9723475A2000E978A5 /* LaunchScreen.storyboard */,
+				75CA21CB234B4033009D65AD /* AddViewController.swift */,
+				75CA21CD234B407C009D65AD /* GamesViewController.swift */,
+				75CA21CF234B4092009D65AD /* EditViewController.swift */,
+				75CA21D1234B40BD009D65AD /* SettingsViewController.swift */,
+				D8CDBBCE2370899F0029A624 /* TranslateIntroductionViewController.swift */,
+				D8CDBBCC2370898B0029A624 /* TranslateResultsViewController.swift */,
+				D8CDBBCA237089680029A624 /* TranslateQuestionViewController.swift */,
+				75335E8D23475A1E00E978A5 /* HomeViewController.swift */,
+				753D20BB234DE1120075A878 /* InitialScreen.swift */,
+				7518CE7723630AB100811E4F /* ResultsViewController.swift */,
+				7518CE7523630A9900811E4F /* QuestionViewController.swift */,
+				7518CE7B23630B3C00811E4F /* IntroductionViewController.swift */,
+				D8847854237AFF2B00AC3736 /* RecentWordsTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7575F34B237C158700426559 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D80271DA235DF87C00F08CF9 /* CoreUser.swift */,
+				D80271DC235E02A100F08CF9 /* CoreWords.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7575F34C237C159200426559 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D8F8265523609AB900DD6265 /* recentQueue.swift */,
+				7518CE7F23630DC500811E4F /* QuestionData.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
