@@ -33,6 +33,10 @@ class TranslateQuestionViewController: UIViewController {
     
     @IBOutlet var progressBar: UIProgressView!
     
+    struct Response : Codable{ //thsi is the structure of the response sent by the API wordsAPI
+        let word : String
+        let typeOf : Array <String>
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,9 +59,72 @@ class TranslateQuestionViewController: UIViewController {
     
     @IBAction func confirm(_ sender: Any) {
         //check answer is correct here - similar to singleAnswerButton.. func
-        if let text = translation.text, text.isEmpty{
+        var text = translation.text
+        if text?.isEmpty ?? true{
             response.text = "Enter something first"
-        } else if (currentAnswer == translation.text){
+            return
+        }
+        
+        let headers = [
+            "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+            "x-rapidapi-key": "63caad11ccmsh4d5b696252bbe68p178817jsnb18aaaa6885c"
+        ]
+        
+        //currentAnswer = no space + lowercase
+        currentAnswer = (currentAnswer.filter { !$0.isNewline && !$0.isWhitespace }).lowercased()
+        text = (text!.filter { !$0.isNewline && !$0.isWhitespace }).lowercased()
+        print(currentAnswer)
+        print(text!)
+        
+        let urlString = "https://wordsapiv1.p.rapidapi.com/words/\(currentAnswer)/typeOf"
+        
+        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error!)
+            } else {
+                //let httpResponse = response as? HTTPURLResponse
+                //print(httpResponse!)
+                //print(data as Any)
+                let responseData = String(data: data!, encoding: String.Encoding.utf8)
+                print(responseData as Any) //maybe can try string manip here
+                
+                
+                do{
+                    let jsonDecoder = JSONDecoder()
+                    let dataObject = try jsonDecoder.decode(Response.self, from: data!)
+                    print("JSON decoded here:")
+                    print(dataObject)
+                    let synonyms = dataObject.typeOf
+                    print(synonyms) //here is the array of synonyms ---> how to use then outise this dataTask function :shrug:
+                    
+                }
+                catch {
+                    print("Failed decoding")
+                }
+                
+
+                
+            }
+        })
+        
+        
+        dataTask.resume()
+        
+        ///api call returns synonyms for the answer -> if the user enters the correct answer or one of its synonyms, = correct
+        //array should be all lower case no space
+        
+        
+        
+        
+        
+         if (currentAnswer == text){
             correctAnswers += 1
             response.text = "Correct!"
             confirm.isUserInteractionEnabled = false
