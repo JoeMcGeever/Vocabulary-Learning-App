@@ -50,12 +50,70 @@ class TranslateQuestionViewController: UIViewController {
             
             
         }else {
+            
+            //MAYBE SET AN ARRAY OF 10 --> EACH HOLDS AN ARRAY OF SYNONYMS FOR THAT THING
 
             updateUI()
         }
         //get the 10 pairs of words        //get 10 questions + 4 answers, one correct
         
     }
+    
+    
+    
+    
+    
+    
+    
+    func getSynonym(word:String, completionHandler: @escaping (Array<String>) -> ()) {
+        
+        let headers = [
+            "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+            "x-rapidapi-key": "63caad11ccmsh4d5b696252bbe68p178817jsnb18aaaa6885c"
+        ]
+        let urlString = "https://wordsapiv1.p.rapidapi.com/words/\(word)/typeOf"
+        
+        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in //async func here URLSession  { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error!)
+            } else {
+                //let responseData = String(data: data!, encoding: String.Encoding.utf8)
+                //print(responseData as Any) //maybe can try string manip here
+    
+                do{
+                    let jsonDecoder = JSONDecoder()
+                    let dataObject = try jsonDecoder.decode(Response.self, from: data!)
+                    //print("JSON decoded here:")
+                    //print(dataObject)
+                    let synonyms = dataObject.typeOf
+                    //print(synonyms) //here is the array of synonyms ---> how to use then outise this dataTask function :shrug:
+                    completionHandler(synonyms) //return in the completion handler --> callback
+                }
+                catch {
+                    print("Failed decoding")
+                }
+            }
+            }).resume()
+    
+    }
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
     
     @IBAction func confirm(_ sender: Any) {
         //check answer is correct here - similar to singleAnswerButton.. func
@@ -65,66 +123,70 @@ class TranslateQuestionViewController: UIViewController {
             return
         }
         
-        let headers = [
-            "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
-            "x-rapidapi-key": "63caad11ccmsh4d5b696252bbe68p178817jsnb18aaaa6885c"
-        ]
-        
         //currentAnswer = no space + lowercase
         currentAnswer = (currentAnswer.filter { !$0.isNewline && !$0.isWhitespace }).lowercased()
         text = (text!.filter { !$0.isNewline && !$0.isWhitespace }).lowercased()
         print(currentAnswer)
         print(text!)
         
-        let urlString = "https://wordsapiv1.p.rapidapi.com/words/\(currentAnswer)/typeOf"
+        print("fingers crosses")
         
-        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL,
-                                                cachePolicy: .useProtocolCachePolicy,
-                                            timeoutInterval: 10.0)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
         
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            if (error != nil) {
-                print(error!)
-            } else {
-                //let httpResponse = response as? HTTPURLResponse
-                //print(httpResponse!)
-                //print(data as Any)
-                let responseData = String(data: data!, encoding: String.Encoding.utf8)
-                print(responseData as Any) //maybe can try string manip here
-                
-                
-                do{
-                    let jsonDecoder = JSONDecoder()
-                    let dataObject = try jsonDecoder.decode(Response.self, from: data!)
-                    print("JSON decoded here:")
-                    print(dataObject)
-                    let synonyms = dataObject.typeOf
-                    print(synonyms) //here is the array of synonyms ---> how to use then outise this dataTask function :shrug:
-                    
-                }
-                catch {
-                    print("Failed decoding")
-                }
-                
-
-                
-            }
+        
+        getSynonym(word: text!, completionHandler: { (synonyms) in //calls the async function whcih returns the array
+            print(synonyms)
         })
         
         
-        dataTask.resume()
-        
-        ///api call returns synonyms for the answer -> if the user enters the correct answer or one of its synonyms, = correct
-        //array should be all lower case no space
+        print("Still gets run before getSynonym func")
         
         
+//        let headers = [
+//            "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+//            "x-rapidapi-key": "63caad11ccmsh4d5b696252bbe68p178817jsnb18aaaa6885c"
+//        ]
+//
+//
+//
+//        let urlString = "https://wordsapiv1.p.rapidapi.com/words/\(currentAnswer)/typeOf"
+//
+//        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL,
+//                                                cachePolicy: .useProtocolCachePolicy,
+//                                            timeoutInterval: 10.0)
+//        request.httpMethod = "GET"
+//        request.allHTTPHeaderFields = headers
+//
+//        let session = URLSession.shared
+//
+//        session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in //async func here URLSession  { (data, response, error) -> Void in
+//            if (error != nil) {
+//                print(error!)
+//            } else {
+//                //let httpResponse = response as? HTTPURLResponse
+//                //print(httpResponse!)
+//                //print(data as Any)
+//                let responseData = String(data: data!, encoding: String.Encoding.utf8)
+//                print(responseData as Any) //maybe can try string manip here
+//
+//
+//                do{
+//                    let jsonDecoder = JSONDecoder()
+//                    let dataObject = try jsonDecoder.decode(Response.self, from: data!)
+//                    print("JSON decoded here:")
+//                    print(dataObject)
+//                    let synonyms = dataObject.typeOf
+//                    print(synonyms) //here is the array of synonyms ---> how to use then outise this dataTask function :shrug:
+//
+//
+//                }
+//                catch {
+//                    print("Failed decoding")
+//                }
+//            }
+//            }).resume()
         
         
-        
-         if (currentAnswer == text){
+        if (currentAnswer == text){
             correctAnswers += 1
             response.text = "Correct!"
             confirm.isUserInteractionEnabled = false
@@ -140,7 +202,6 @@ class TranslateQuestionViewController: UIViewController {
             nextButton.setTitleColor(.none, for: .normal)
             
         }
-        
     }
     
     func updateUI() {
