@@ -14,6 +14,7 @@ class UsersCoreData {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     //refer to persistant container
     
+    
     func addNewUser(name : String, lang : String) -> Bool{
          //create the context
         let context = appDelegate.persistentContainer.viewContext
@@ -63,11 +64,19 @@ class UsersCoreData {
             fetchRequest.predicate = NSPredicate(format: "name = %@", oldName)
             do {
                 let test = try context.fetch(fetchRequest)
-                print(test)
-                let itemUpdate = test[0] as! NSManagedObject
-                itemUpdate.setValue(newName, forKey: "name")
                 
-                itemUpdate.setValue(lang, forKey: "language")
+                if(!test.isEmpty){ // if the data is already set
+                    let itemUpdate = test[0] as! NSManagedObject
+                    itemUpdate.setValue(newName, forKey: "name")
+                    
+                    itemUpdate.setValue(lang, forKey: "language")
+                    
+                } else {
+                    addNewUser(name: newName, lang: lang)
+                }
+                
+                
+
                 do {
                     try context.save()
                     return true
