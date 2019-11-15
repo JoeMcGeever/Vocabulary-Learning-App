@@ -44,7 +44,7 @@ class TranslateQuestionViewController: UIViewController {
         questions = wordsCoreData.getTenPairs() ?? [Question(text: "", answers: [Answer(text: "", correct: false)])]
         if(questions[0].text == ""){
             let alert = UIAlertController(title: "Cannot play", message: "You need at least 10 word pairs to play", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok!", style: .default) { (action) in self.performSegue(withIdentifier: "ResultsSegue", sender : action)}
+            let action = UIAlertAction(title: "Ok!", style: .default) { (action) in self.performSegue(withIdentifier: "TranslateResultsSegue", sender : action)}
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
             
@@ -99,6 +99,8 @@ class TranslateQuestionViewController: UIViewController {
                 }
                 catch {
                     print("Failed decoding")
+                    completionHandler([])
+                    
                 }
             }
             }).resume()
@@ -129,79 +131,35 @@ class TranslateQuestionViewController: UIViewController {
         print(currentAnswer)
         print(text!)
         
-        print("fingers crosses")
-        
-        
-        
-        getSynonym(word: text!, completionHandler: { (synonyms) in //calls the async function whcih returns the array
-            print(synonyms)
+        getSynonym(word: currentAnswer, completionHandler: { (synonyms) in //calls the async function whcih returns the array
+            DispatchQueue.main.async { //pulls to the main thread
+                //print(synonyms)
+                var validatedSynonyms : Array<String> = []
+                for i in synonyms { //format the same as if it was a given answer
+                    
+                    validatedSynonyms.append((i.filter { !$0.isNewline && !$0.isWhitespace }).lowercased())
+                }
+                print(validatedSynonyms)
+                
+                if (self.currentAnswer == text || validatedSynonyms.contains(text!) ){
+                    self.correctAnswers += 1
+                    self.response.text = "Correct!"
+                    self.confirm.isUserInteractionEnabled = false
+                    
+                    self.nextButton.isUserInteractionEnabled = true
+                    self.nextButton.setTitleColor(.none, for: .normal)
+                } else {
+                    self.response.text = "Incorrect. Above is the correct answer"
+                    self.translation.text = self.currentAnswer
+                    self.confirm.isUserInteractionEnabled = false
+                    
+                    self.nextButton.isUserInteractionEnabled = true
+                    self.nextButton.setTitleColor(.none, for: .normal)
+                    
+                }
+            }
         })
         
-        
-        print("Still gets run before getSynonym func")
-        
-        
-//        let headers = [
-//            "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
-//            "x-rapidapi-key": "63caad11ccmsh4d5b696252bbe68p178817jsnb18aaaa6885c"
-//        ]
-//
-//
-//
-//        let urlString = "https://wordsapiv1.p.rapidapi.com/words/\(currentAnswer)/typeOf"
-//
-//        let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL,
-//                                                cachePolicy: .useProtocolCachePolicy,
-//                                            timeoutInterval: 10.0)
-//        request.httpMethod = "GET"
-//        request.allHTTPHeaderFields = headers
-//
-//        let session = URLSession.shared
-//
-//        session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in //async func here URLSession  { (data, response, error) -> Void in
-//            if (error != nil) {
-//                print(error!)
-//            } else {
-//                //let httpResponse = response as? HTTPURLResponse
-//                //print(httpResponse!)
-//                //print(data as Any)
-//                let responseData = String(data: data!, encoding: String.Encoding.utf8)
-//                print(responseData as Any) //maybe can try string manip here
-//
-//
-//                do{
-//                    let jsonDecoder = JSONDecoder()
-//                    let dataObject = try jsonDecoder.decode(Response.self, from: data!)
-//                    print("JSON decoded here:")
-//                    print(dataObject)
-//                    let synonyms = dataObject.typeOf
-//                    print(synonyms) //here is the array of synonyms ---> how to use then outise this dataTask function :shrug:
-//
-//
-//                }
-//                catch {
-//                    print("Failed decoding")
-//                }
-//            }
-//            }).resume()
-        
-        
-        if (currentAnswer == text){
-            correctAnswers += 1
-            response.text = "Correct!"
-            confirm.isUserInteractionEnabled = false
-            
-            nextButton.isUserInteractionEnabled = true
-            nextButton.setTitleColor(.none, for: .normal)
-        } else {
-            response.text = "Incorrect. Above is the correct answer"
-            translation.text = currentAnswer
-            confirm.isUserInteractionEnabled = false
-            
-            nextButton.isUserInteractionEnabled = true
-            nextButton.setTitleColor(.none, for: .normal)
-            
-        }
     }
     
     func updateUI() {
