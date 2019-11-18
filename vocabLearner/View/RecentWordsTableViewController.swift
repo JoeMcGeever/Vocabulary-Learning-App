@@ -63,7 +63,7 @@ class RecentWordsTableViewController: UITableViewController {
      if editingStyle == .delete {
         let word = words[indexPath.row]
         print("\(word.origin), \(word.translation) was deleted")
-        wordsCoreData.deleteWordPair(searchWord: word.origin) //delete out of core data
+        print(wordsCoreData.deleteWordPair(searchWord: word.origin)) //delete out of core data
         RecentlyAdded.sharedInstance.removeItem(originToRemove: word.origin) //delete out of array
         self.words.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)

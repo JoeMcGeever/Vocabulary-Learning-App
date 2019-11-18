@@ -72,7 +72,7 @@ class UsersCoreData {
                     itemUpdate.setValue(lang, forKey: "language")
                     
                 } else {
-                    addNewUser(name: newName, lang: lang)
+                    print(addNewUser(name: newName, lang: lang))
                 }
                 
                 
