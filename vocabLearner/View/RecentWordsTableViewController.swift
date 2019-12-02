@@ -12,29 +12,27 @@ class RecentWordsTableViewController: UITableViewController {
     
     let wordsCoreData = WordsCoreData()//to delete words /edit
     
-    
-    var words: Array<word> = []
+    var words: Array<word> = [] //Holds the array of recent words
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        words = RecentlyAdded.sharedInstance.getArray()
+        words = RecentlyAdded.sharedInstance.getArray() // populates the words array with the recently added words
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) { //reloads the view everytime the user looks at it
         tableView.reloadData()
     }
 
-    // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int { //returns the number of sections
         return 1
     }
     
     
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { //returns the number of rows
         
         if section == 0{
             return words.count
@@ -45,7 +43,7 @@ class RecentWordsTableViewController: UITableViewController {
         
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { //populates each cell of the table
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "wordCell", for: indexPath)
         let word = words[indexPath.row]
         cell.textLabel?.text = "\(word.origin)"
@@ -53,16 +51,15 @@ class RecentWordsTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { //the system to understand which item is picked
         let word = words[indexPath.row]
         print("\(word.origin), \(word.translation) was picked")
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) { //enable swipe to delete
-        //acc delete from dB here
      if editingStyle == .delete {
         let word = words[indexPath.row]
-        print("\(word.origin), \(word.translation) was deleted")
+        //print("\(word.origin), \(word.translation) was deleted")
         print(wordsCoreData.deleteWordPair(searchWord: word.origin)) //delete out of core data
         RecentlyAdded.sharedInstance.removeItem(originToRemove: word.origin) //delete out of array
         self.words.remove(at: indexPath.row)
@@ -70,49 +67,6 @@ class RecentWordsTableViewController: UITableViewController {
      }
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

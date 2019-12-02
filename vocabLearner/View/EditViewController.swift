@@ -28,14 +28,13 @@ class EditViewController: UIViewController {
     let userCoreData = UsersCoreData()
     
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { //set all UI components to standard form
         super.viewDidLoad()
         searched = false
         
         origin.delegate = self
         translation.delegate = self
         searchWord.delegate = self
-        
         searchWord.text = ""
         origin.text = ""
         translation.text = ""
@@ -50,7 +49,7 @@ class EditViewController: UIViewController {
         translation.backgroundColor = .lightGray
         
         
-        let userDetails = userCoreData.getUserDetails()
+        let userDetails = userCoreData.getUserDetails() //get the users details form core data
         let language = userDetails[1] //this holds the users language
         //sets the labels above the text boxes
         //only needed if user is learning a language
@@ -58,13 +57,13 @@ class EditViewController: UIViewController {
             originLabel.text = "English"
             translationLabel.text = language
         } else {
-            originLabel.text = ""
+            originLabel.text = "" //if the user isnt learning a langauge, then the labels do not have to display anything
             translationLabel.text = ""
         }
     }
     
     
-    //so when return tot he page, it reloads
+    //so when return to the page, it reloads
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewDidLoad()
@@ -73,8 +72,8 @@ class EditViewController: UIViewController {
     @IBAction func searchButton(_ sender: Any) {
         
         text = searchWord.text ?? ""
-        if  text != ""{
-            searched = true
+        if  text != ""{ // the user has searched for a word
+            searched = true //update the "searched" variable to true
             let searchResult = wordsCoreData.getWordPair(searchWord: text)
             
             //populate the 2 text fields with the data
@@ -90,7 +89,7 @@ class EditViewController: UIViewController {
                 origin.backgroundColor = .none
                 translation.backgroundColor = .none
             } else {
-                searched = false
+                searched = false // set the searched variable to false
                 
                 origin.text = ""
                 translation.text = ""
@@ -103,7 +102,7 @@ class EditViewController: UIViewController {
             }
             
         }
-        else {
+        else { //if the user didnt search for anything, display an error
             let alert = UIAlertController(title: "Alert", message: "Please search for something", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok!", style: .default, handler: nil)
             alert.addAction(action)
@@ -117,19 +116,18 @@ class EditViewController: UIViewController {
     
     
     @IBAction func deleteButton(_ sender: Any) {
-        //ONLY ALLOW IF SEARCH IS COMPLETED
+        //only allowed if the search variable is true (see function above)
         if(searched == true){
         let refreshAlert = UIAlertController(title: "Are you sure?", message: "This word will be deleted.", preferredStyle: UIAlertController.Style.alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-          print("Handle Ok logic here")
 
-            //do delete stuff here
+            //deletes the word from core data
             if(self.wordsCoreData.deleteWordPair(searchWord: self.searchWord.text!)){
                 print("Delete was successful")
             }
             
             
-            self.viewDidLoad() // refresh view
+            self.viewDidLoad() // refreshes the view ( so deleted word is no longer there)
             
           }))
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -146,11 +144,11 @@ class EditViewController: UIViewController {
     
     
     @IBAction func confirmButton(_ sender: Any) {
-        //ONLY ALLOW IF SEARCH IS COMPLETED
+        //only allowed if the search variable is true (see function above)
         originWord = origin.text ?? ""
         translationWord = translation.text ?? ""
-        if (originWord == "" || translationWord == "") {
-            //error message
+        if (originWord == "" || translationWord == "") { // if the users "update" for the word pair contains an empty string in origin or translation, then do not run the update
+            print("update failed")
         }
         else if(searched == true) {
             //do update data stuff here

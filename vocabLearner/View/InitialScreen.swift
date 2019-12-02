@@ -59,7 +59,7 @@ class InitialScreenViewController :UIViewController, UIPickerViewDataSource, UIP
 }
 
 extension InitialScreenViewController : UITextFieldDelegate {
-    
+    //this extension allows the keyboard to "return" (dismiss after use)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             textField.resignFirstResponder()
             return true

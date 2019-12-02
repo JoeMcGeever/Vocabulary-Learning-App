@@ -10,13 +10,15 @@ import UIKit
 
 class TranslateResultsViewController: UIViewController {
 
-    var correctAnswers: Int = 0
+    
+    
+    var correctAnswers: Int = 0 //this variable gets updated through a programatic segue
     @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        scoreLabel.text = "\(correctAnswers)"
+        scoreLabel.text = "\(correctAnswers)" //display the score
     }
     
 

@@ -48,15 +48,13 @@ class AddViewController: UIViewController {
     }
     
     
-    @IBAction func addButton(_ sender: Any) {
+    @IBAction func addButton(_ sender: Any) { //when the addButton is pressed, displays an "are you sure" alert
         let refreshAlert = UIAlertController(title: "Are you sure?", message: "Word will be saved.", preferredStyle: UIAlertController.Style.alert)
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-          print("Handle Ok logic here")
-
             self.addWord() //call the addWord function
           }))
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-          print("Handle Cancel Logic here")
+          print("User cancels")
           }))
         present(refreshAlert, animated: true, completion: nil)
     }
@@ -66,7 +64,7 @@ class AddViewController: UIViewController {
     func addWord(){
         var message : String
         let title = "Alert"
-        if let text = firstText.text, !text.isEmpty, let text2 = secondText.text, !text2.isEmpty{
+        if let text = firstText.text, !text.isEmpty, let text2 = secondText.text, !text2.isEmpty{ //if both fields have entered correctly
             //call module
             message = wordsCoreData.addNewWord(firstWord: firstText.text!, secondWord: secondText.text!)
             
@@ -75,12 +73,12 @@ class AddViewController: UIViewController {
             message = "Please fill in all the details"
         }
         
-        //display the message depending on whether the user has inserted the data
+        //display the message depending on whether the system has accepted or rejected the addition
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok!", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-        
+        //refresh the text fields
         firstText.text = ""
         secondText.text = ""
         

@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
          if(firstTime()){
-            //show initial set up if
+            //show initial set up if the application hasnt been opened before
             performSegue(withIdentifier: "initialStartUp", sender: nil)
             viewDidLoad()
         }
@@ -40,7 +40,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    func firstTime()->Bool{
+    func firstTime()->Bool{ //returns true if it is the users first time, false otherwise
         let defaults = UserDefaults.standard
         if defaults.string(forKey: "firstTime") != nil{
             //print("App already launched : \(firstTime)")

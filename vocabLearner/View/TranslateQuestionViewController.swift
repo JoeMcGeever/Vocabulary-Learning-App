@@ -11,7 +11,7 @@ import UIKit
 class TranslateQuestionViewController: UIViewController {
     
     let wordsCoreData = WordsCoreData()
-    var questions : Array<Question> = []
+    var questions : Array<Question> = [] //holds an array of quesitons
     
     @IBOutlet weak var origin: UILabel!
     @IBOutlet weak var translation: UITextField!
@@ -20,7 +20,7 @@ class TranslateQuestionViewController: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
     @IBAction func nextButton(_ sender: Any) {
-        nextQuestion()
+        nextQuestion() //calls next question
         
     }
     
@@ -33,7 +33,7 @@ class TranslateQuestionViewController: UIViewController {
     
     @IBOutlet var progressBar: UIProgressView!
     
-    struct Response : Codable{ //thsi is the structure of the response sent by the API wordsAPI
+    struct Response : Codable{ //this is the structure of the response sent by the API wordsAPI
         let word : String
         let typeOf : Array <String>
     }
@@ -41,21 +41,17 @@ class TranslateQuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         translation.delegate = self //so it can return from keyboard
-        questions = wordsCoreData.getTenPairs() ?? [Question(text: "", answers: [Answer(text: "", correct: false)])]
-        if(questions[0].text == ""){
+        questions = wordsCoreData.getTenPairs() ?? [Question(text: "", answers: [Answer(text: "", correct: false)])] // populates the question array
+        if(questions[0].text == ""){ //users need 10 translations to play
             let alert = UIAlertController(title: "Cannot play", message: "You need at least 10 word pairs to play", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok!", style: .default) { (action) in self.performSegue(withIdentifier: "TranslateResultsSegue", sender : action)}
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
-            
-            
         }else {
-            
-            //MAYBE SET AN ARRAY OF 10 --> EACH HOLDS AN ARRAY OF SYNONYMS FOR THAT THING
-
-            updateUI()
+            updateUI() //if user has at least 10 words, ustart the game
         }
-        //get the 10 pairs of words        //get 10 questions + 4 answers, one correct
+        //get the 10 pairs of words
+        //get 10 questions + 4 answers, one correct
         
     }
     
@@ -66,18 +62,19 @@ class TranslateQuestionViewController: UIViewController {
     
     
     func getSynonym(word:String, completionHandler: @escaping (Array<String>) -> ()) {
+        //an API request to return synonyms of a selection of questions
         
         let headers = [
             "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
             "x-rapidapi-key": "63caad11ccmsh4d5b696252bbe68p178817jsnb18aaaa6885c"
         ]
-        let urlString = "https://wordsapiv1.p.rapidapi.com/words/\(word)/typeOf"
+        let urlString = "https://wordsapiv1.p.rapidapi.com/words/\(word)/typeOf" //inject into the url, the word I wish to get the synonyms of
         
         let request = NSMutableURLRequest(url: NSURL(string: urlString)! as URL,
                                                 cachePolicy: .useProtocolCachePolicy,
                                             timeoutInterval: 10.0)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
+        request.httpMethod = "GET" //GET request
+        request.allHTTPHeaderFields = headers //include the headers (including my API key)
         
         let session = URLSession.shared
         
@@ -86,7 +83,7 @@ class TranslateQuestionViewController: UIViewController {
                 print(error!)
             } else {
                 //let responseData = String(data: data!, encoding: String.Encoding.utf8)
-                //print(responseData as Any) //maybe can try string manip here
+                //print(responseData as Any)
     
                 do{
                     let jsonDecoder = JSONDecoder()
@@ -132,25 +129,30 @@ class TranslateQuestionViewController: UIViewController {
         print(text!)
         
         getSynonym(word: currentAnswer, completionHandler: { (synonyms) in //calls the async function whcih returns the array
-            DispatchQueue.main.async { //pulls to the main thread
+            
+            
+            DispatchQueue.main.async { //pulls to the main thread, so the function no longer runs asynchronously
                 //print(synonyms)
+                
+                
                 var validatedSynonyms : Array<String> = []
                 for i in synonyms { //format the same as if it was a given answer
                     
-                    validatedSynonyms.append((i.filter { !$0.isNewline && !$0.isWhitespace }).lowercased())
+                    validatedSynonyms.append((i.filter { !$0.isNewline && !$0.isWhitespace }).lowercased()) //formulate the synonym words to follow the same standard foprmat
+                    
                 }
                 print(validatedSynonyms)
                 
-                if (self.currentAnswer == text || validatedSynonyms.contains(text!) ){
+                if (self.currentAnswer == text || validatedSynonyms.contains(text!) ){ //if the user enters the correwct translation, or the translation is a synonym
                     self.correctAnswers += 1
                     self.response.text = "Correct!"
-                    self.confirm.isUserInteractionEnabled = false
+                    self.confirm.isUserInteractionEnabled = false // cannot confirm again
                     
-                    self.nextButton.isUserInteractionEnabled = true
+                    self.nextButton.isUserInteractionEnabled = true //but can continue to next question
                     self.nextButton.setTitleColor(.none, for: .normal)
                 } else {
                     self.response.text = "Incorrect. Above is the correct answer"
-                    self.translation.text = self.currentAnswer
+                    self.translation.text = self.currentAnswer //display the correct answer
                     self.confirm.isUserInteractionEnabled = false
                     
                     self.nextButton.isUserInteractionEnabled = true
@@ -163,22 +165,21 @@ class TranslateQuestionViewController: UIViewController {
     }
     
     func updateUI() {
+        //update the UI
+        
         translation.text = ""
         response.text = ""
         confirm.isUserInteractionEnabled = true
         nextButton.isUserInteractionEnabled = false
         nextButton.setTitleColor(.lightGray, for: .normal)
-        
-        
+                
         navigationItem.title = "Question \(questionIndex+1)"
         let currentQuestion = questions[questionIndex]
         currentAnswer = currentQuestion.text //as the first answer is always the correct one (see the coreWords file. Fucntion: getTenPairs
         
-        
-        
+
         let totalProgress = Float(questionIndex+1) / Float(questions.count)
         
-
         origin.text = currentQuestion.answers[0].text
         progressBar.setProgress(totalProgress, animated: true)
 
@@ -188,14 +189,14 @@ class TranslateQuestionViewController: UIViewController {
     
     func nextQuestion() {
         questionIndex += 1
-        if questionIndex < questions.count {
+        if questionIndex < questions.count { //if there are more questions, repeat the process again
             updateUI()
         } else {
-            performSegue(withIdentifier: "TranslateResultsSegue", sender: nil)
+            performSegue(withIdentifier: "TranslateResultsSegue", sender: nil) //otherwise, programatically segue
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { //sends the score to the results view
         if segue.identifier == "TranslateResultsSegue" {
             let resultsViewController = segue.destination as! TranslateResultsViewController
             resultsViewController.correctAnswers = correctAnswers
@@ -203,7 +204,7 @@ class TranslateQuestionViewController: UIViewController {
     }
 }
 
-extension TranslateQuestionViewController : UITextFieldDelegate {
+extension TranslateQuestionViewController : UITextFieldDelegate { //so keyboard is dismissed upon "return" being pressed
 
 func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

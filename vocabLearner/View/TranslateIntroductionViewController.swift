@@ -10,24 +10,15 @@ import UIKit
 
 class TranslateIntroductionViewController: UIViewController {
 
-    @IBAction func unwindToTranslateIntroduction(segue: UIStoryboardSegue){
+    //this view is purely visual, with an unwind segue
+    
+    @IBAction func unwindToTranslateIntroduction(segue: UIStoryboardSegue){ //to unwind segue
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

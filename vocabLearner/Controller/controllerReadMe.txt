@@ -1,0 +1,4 @@
+This is the controller of my project and can talk to both the model and the view
+Unlike traditional MVC patterns, my controller also contains all core data manipulation.
+This is because, after researching data types and architectures for various systems, having the core data manipulation here is more beneficial to my project due to the nature of my data. (That is, data is manipulated rarely but grouped often - so the system will be better off using the model to arrange the data in the few cases it needs to). This saves unnecessary data transfer between modules which in turn speeds up my system.
+Moreover, apple uses a mechanism called "faulting" in its core data, which means that the data isnt actually present until it is manipulated (stores a pointer to core data). which means the fetching of core data, is relatively not that costly.
