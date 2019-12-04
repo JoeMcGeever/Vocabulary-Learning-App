@@ -73,6 +73,27 @@ class coreWordsTests: XCTestCase {
         XCTAssertFalse(instance.updateWordPair(searchWord: "notAWordInSystem", firstWord: "predator", secondWord: "raubtier"))
     }
     
+    func testGetTenPairs() {
+        //given
+        let instance = WordsCoreData()
+        //when
+        for i in 0...9 {
+            instance.addNewWord(firstWord: "word\(i)", secondWord: "word\(i)")
+        }
+        //then
+        XCTAssertEqual(instance.getTenPairs()?.count, 10)
+    }
+    
+    func testInvalidGetTenPairs() {
+        //given
+        let instance = WordsCoreData()
+        //when
+        for i in 0...9 {
+            instance.deleteWordPair(searchWord: "word\(i)")
+        }
+        //then
+        XCTAssertNil(instance.getTenPairs())
+    }
     
     
 }
