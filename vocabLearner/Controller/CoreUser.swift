@@ -17,6 +17,9 @@ class UsersCoreData {
     
     func addNewUser(name : String, lang : String) -> Bool{ //saves all necessary data for a user
          //create the context
+        if(name=="" || lang=="") {
+            return false
+        }
         let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "User", in: context) //set the entity that we wish to manipulate
         let newUser = NSManagedObject(entity: entity!, insertInto: context)

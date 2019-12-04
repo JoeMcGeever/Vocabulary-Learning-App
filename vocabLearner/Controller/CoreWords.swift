@@ -36,7 +36,7 @@ class WordsCoreData {
             RecentlyAdded.sharedInstance.enqueue(origin: firstWord, translation: secondWord)
             return "Added!" // return added!
           } catch {
-           return "Failed saving" //return fail if it fails for some reason0
+           return "Failed saving" //return fail if it fails for some reason
         }
     }
     
@@ -72,7 +72,9 @@ class WordsCoreData {
                 fetchRequest.predicate = NSPredicate(format: "origin = %@ OR translation = %@", searchWord, searchWord) //search in core data for the word pair
                 do {
                     let test = try context.fetch(fetchRequest)
-                    //print(test)
+                    if(test.isEmpty){
+                        return false
+                    }
                     let itemUpdate = test[0] as! NSManagedObject
                     
                     //update the values:
@@ -89,9 +91,9 @@ class WordsCoreData {
                 }
                 catch {
                     print("error")
+                    return false
                 }
-        return false
-        
+     
         
         
     }

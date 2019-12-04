@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import vocabLearner
+@testable import Vocab_Learner
 
-class vocabLearnerTests: XCTestCase {
+class Vocab_LearnerTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
