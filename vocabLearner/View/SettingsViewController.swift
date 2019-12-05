@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var currentUsername : String = "" //variables used to chaneg the users name
     var newUsername : String = ""
     var language : String = ""
-    var selectedLanguage : String = "PICKER FAILED" //sets a standard if the picker should fail
+    var selectedLanguage : String = "Inapplicable" //sets a standard if the picker should fail
     let userCoreData = UsersCoreData()
     
     
