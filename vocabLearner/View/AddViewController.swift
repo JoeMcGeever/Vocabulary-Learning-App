@@ -32,12 +32,12 @@ class AddViewController: UIViewController {
         let language = userDetails[1] //this holds the users language
         //sets the labels above the text boxes
         //only needed if user is learning a language
-        if(language != "Inapplicable"){
+        if(language != ""){
             firstLabel.text = "English"
             secondLabel.text = language
         } else {
-            firstLabel.text = ""
-            secondLabel.text = ""
+            firstLabel.text = "Origin"
+            secondLabel.text = "Translation"
         }
     }
 

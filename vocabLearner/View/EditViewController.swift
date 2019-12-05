@@ -53,12 +53,12 @@ class EditViewController: UIViewController {
         let language = userDetails[1] //this holds the users language
         //sets the labels above the text boxes
         //only needed if user is learning a language
-        if(language != "Inapplicable"){
+        if(language != ""){
             originLabel.text = "English"
             translationLabel.text = language
         } else {
-            originLabel.text = "" //if the user isnt learning a langauge, then the labels do not have to display anything
-            translationLabel.text = ""
+            originLabel.text = "Origin" //if the user isnt learning a langauge, then the labels do not have to display anything
+            translationLabel.text = "Transaltion"
         }
     }
     
